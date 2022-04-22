@@ -1,5 +1,5 @@
 import React from 'react';
-
+import './login.css';
 const Login = () => (
     <div id="login-wrapper">
         <div id="login-text-wrapper">
@@ -14,6 +14,13 @@ const Login = () => (
                 <button type='submit'>Login</button>
             </form>
         </div>
+        <hr></hr>
+        <div id="other-auth-wrapper">
+            <p>Or log in with:</p>
+            <button>Google</button>
+            <button>Facebook</button>
+        </div>
+
     </div>
 )
 

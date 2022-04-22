@@ -1,5 +1,6 @@
 import React from 'react';
 import Login from '../../components/Login/Login';
+import './landing.css';
 
 const Landing = () => {
 
