@@ -1,5 +1,6 @@
 import React from 'react';
 import './login.css';
+import FacebookIcon from '../../images/facebook-login-icon.png';
 const Login = () => (
     <div id="login-wrapper">
         <div id="login-text-wrapper">
@@ -17,8 +18,8 @@ const Login = () => (
         <hr></hr>
         <div id="other-auth-wrapper">
             <p>Or log in with:</p>
-            <button>Google</button>
-            <button>Facebook</button>
+            <button><img src="images/google_login_icon.svg"></img>Google</button>
+            <button><img src="../../images/facebook-login-icon.png"></img>Facebook</button>
         </div>
 
     </div>
