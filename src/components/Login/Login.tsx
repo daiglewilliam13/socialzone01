@@ -1,7 +1,6 @@
 import React from 'react';
 import './login.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faGoogle } from '@fortawesome/free-solid-svg-icons';
 const Login = () => (
     
     <div id="login-wrapper">
@@ -23,7 +22,7 @@ const Login = () => (
             <hr></hr>
             <div id="other-auth-wrapper">
                 <p>Or log in with:</p>
-                <button id="google-login"><FontAwesomeIcon icon={faGoogle}/>Google</button>
+                <button id="google-login"><FontAwesomeIcon icon="fa-brands fa-google" />Google</button>
                 <button id="facebook-login">Facebook</button>
                 <div id="signup-wrapper">
                     <p>New User? <a href="#">Register Here!</a></p>
