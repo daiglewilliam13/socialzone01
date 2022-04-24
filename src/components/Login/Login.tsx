@@ -11,8 +11,10 @@ const Login = () => (
             <h3>Log in</h3>
             <div className="form-wrapper" id="login-form">
                 <form>
-                    <input placeholder='Email' type="text"></input>
-                    <input placeholder='Password' type="password"></input>
+                    <label htmlFor="email">Email Address:</label>
+                    <input placeholder='email@example.com' type="text" name="email"></input>
+                    <label htmlFor="password">Password:</label>
+                    <input placeholder='Password' type="password" name="password"></input>
                     <button type='submit'>Login</button>
                 </form>
             </div>
