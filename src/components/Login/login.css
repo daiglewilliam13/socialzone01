@@ -82,13 +82,12 @@
         min-width: 250px;
         display: flex;
         flex-direction: column;
-        justify-content: center;
-        flex-grow: ;
+        justify-content: start;
     }
 
     div#login-text-wrapper h3 {
         font-size: 2rem;
-        margin: 2rem auto;
+        margin: 4rem auto;
         padding: 0 2rem;
         text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
     }
