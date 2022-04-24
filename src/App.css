@@ -5,7 +5,13 @@ body {
   height: 100%;
   width: 100%;
 }
+a {
+  color:#7155DE;
+}
 
+a:visited{
+  color:#ddd4ff
+}
 .App {
   text-align: center;
 }
