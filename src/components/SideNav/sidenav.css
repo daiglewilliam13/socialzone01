@@ -41,6 +41,7 @@
         border: none;
         color: white;
         transition: .2s;
+        font-size: 1.5rem;
     }
 
     button#sidebar-control:hover {
@@ -57,5 +58,12 @@
         transform: translateX(-10rem);
         transition: .2s;
     }
-
+    .control-icon-expanded {
+        transform: translateX(0);
+        transition:.2s;
+    }
+    .control-icon-collapsed {
+        transform: rotateY(180deg);
+        transition: .2s;
+    }
 }

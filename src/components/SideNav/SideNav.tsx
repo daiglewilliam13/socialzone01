@@ -1,7 +1,7 @@
 import React from 'react';
 import './sidenav.css';
 import { useState } from 'react';
-import { FaChevronLeft } from 'react-icons/fa';
+import { FaChevronLeft, FaChevronRight } from 'react-icons/fa';
 
 
 const SideNav = () => {
@@ -23,7 +23,7 @@ const SideNav = () => {
                     <p>Profile</p>
                 </div>
             </div>
-            <button onClick={moveSideBar} id="sidebar-control"><FaChevronLeft /></button>
+            <button onClick={moveSideBar} id="sidebar-control"><FaChevronLeft className={`control-icon-${sidenavStatus}`}/></button>
         </div>
     )
 }
