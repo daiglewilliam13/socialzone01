@@ -4,6 +4,8 @@ import profilePicture from '../../images/jane-doe.jpg';
 import { BiDownArrow, BiUpArrow } from 'react-icons/bi';
 import './post.css';
 import PostComment from '../PostComment/PostComment';
+import Reply from '../Reply/Reply';
+
 const postObject = {
     author: "Jane Doe",
     date: "Sat, Jun 11 @ 11:35am",
