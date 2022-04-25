@@ -13,7 +13,7 @@ div#border-wrapper h1{
     min-width: 40%;
 }
 div.feed-posts{
-    height: 40vh;
+    height: 40rem;
     min-height: 25rem;
     overflow-y: scroll;
 }
