@@ -1,0 +1,14 @@
+div#border-wrapper {
+    display:flex;
+    padding: 0 4rem;
+}
+
+div#border-line {
+    width: 100%;
+    border-bottom: 1px solid grey;
+    align-self: center;
+}
+
+div#border-wrapper h1{
+    min-width: 40%;
+}
