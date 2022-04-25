@@ -1,15 +1,23 @@
 import React from 'react';
 import './topnav.css';
 import { FaStaylinked, FaSearch, FaBell, FaEnvelope, } from 'react-icons/fa';
+import img from '../../images/john-doe.jpg';
+
 const TopNav = () => {
-    return(
-        <div id="top-navbar-wrapper">
-            <FaStaylinked className="topnav-icon"/>
-                <input type="text" id="search-bar" placeholder='Search...'></input>
-                <FaSearch className="topnav-icon"/>
-                <FaBell className="topnav-icon" />
-                <FaEnvelope className="topnav-icon" />
-            <img id="topnav-profile-photo" src="../images/john-doe.jpg"></img>
+    return (
+        <div id="topnav">
+            <div id="link-wrapper">
+                <div className="left-group">
+                    <FaStaylinked className="topnav-icon " />
+                    <input type="text" id="search-bar" placeholder='Search...'></input>
+                    <FaSearch className="topnav-icon" />
+                </div>
+                <div className="right-group">
+                    <FaBell className="topnav-icon right-side" />
+                    <FaEnvelope className="topnav-icon right-side" />
+                    <img id="topnav-profile-photo" className="right-side" src={img} />
+                </div>
+            </div>
         </div>
     )
 }
