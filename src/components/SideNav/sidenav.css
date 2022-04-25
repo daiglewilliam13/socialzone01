@@ -1,7 +1,44 @@
 @media screen and (min-width: 585px) {
     div#sidenav{
-        width: 20rem;
+        width: 10rem;
         background-color: #C3B6F6;
         margin:0;
+        height: 100vh;
     }
+
+    div#side-link-wrapper {
+        padding: 2rem 0 0 0;
+        display: flex;
+        flex-direction: column;
+        text-align: left;
+        justify-content: center;
+    }
+
+    div#side-link-wrapper p {
+        padding: 0 0 0 2rem;
+        margin:0;
+        height: 2rem;
+        color: white;
+        text-shadow: 0px 2px 2px rgba(0,0,0,0.25);
+        line-height: 32px;
+        transition: .2s;
+    }
+
+    div#side-link-wrapper p:hover{
+        background-color: #9f86ff;;
+        transition: .2s;
+    }
+    div#sidebar-control{
+        
+    }
+    div.sidenav-expanded {
+        transform: translateX(0);
+        transition: .2s
+    }
+
+    div.sidenav-collapsed {
+        transform: translateX(-5rem);
+        transition: .2s;
+    }
+
 }
