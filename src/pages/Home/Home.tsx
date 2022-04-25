@@ -3,6 +3,7 @@ import TopNav from '../../components/TopNav/TopNav';
 import SideNav from '../../components/SideNav/SideNav';
 import CreatePost from '../../components/CreatePost/CreatePost';
 import Feed from '../../components/Feed/Feed';
+import FriendList from '../../components/FriendList/FriendList';
 
 
 const Home = () => {
@@ -10,8 +11,11 @@ const Home = () => {
         <>
         <TopNav />
         <SideNav />
+        <div className="home-wrapper">
         <CreatePost />
         <Feed />
+        <FriendList />
+        </div>
         </>
     )
 }
