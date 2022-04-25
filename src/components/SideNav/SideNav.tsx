@@ -1,25 +1,27 @@
 import React from 'react';
 import './sidenav.css';
-import {useState} from 'react';
-import {FaChevronLeft} from 'react-icons/fa';
+import { useState } from 'react';
+import { FaChevronLeft } from 'react-icons/fa';
 
 
 const SideNav = () => {
-    const [expanded, setExpanded] = useState(true);
+    const [expanded, setExpanded] = useState(false);
     const sidenavStatus = expanded ? 'expanded' : 'collapsed';
-    const moveSideBar = () =>{
-        setExpanded(expanded=> !expanded);
+    const moveSideBar = () => {
+        setExpanded(expanded => !expanded);
     }
-    return(
-        <div id="sidenav" className={`sidenav-${sidenavStatus}`}>
-            <div id="side-link-wrapper">
-                <p>Home</p>
-                <p>Friends</p>
-                <p>Messages</p>
-                <p>Notifications</p>
-                <p>Chatrooms</p>
-                <p>Forums</p>
-                <p>Profile</p>
+    return (
+        <div id="sidenav-wrapper" className={`sidenav-${sidenavStatus}`}>
+            <div id="sidenav" >
+                <div id="side-link-wrapper">
+                    <p>Home</p>
+                    <p>Friends</p>
+                    <p>Messages</p>
+                    <p>Notifications</p>
+                    <p>Chatrooms</p>
+                    <p>Forums</p>
+                    <p>Profile</p>
+                </div>
             </div>
             <button onClick={moveSideBar} id="sidebar-control"><FaChevronLeft /></button>
         </div>
