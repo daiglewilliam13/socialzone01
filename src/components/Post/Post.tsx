@@ -2,6 +2,8 @@ import React from "react";
 import profilePicture from '../../images/jane-doe.jpg';
 import { BiDownArrow, BiUpArrow } from 'react-icons/bi';
 import './post.css';
+import PostComment from '../PostComment/PostComment';
+import { faCommentSlash } from "@fortawesome/free-solid-svg-icons";
 
 const postObject = {
     author: "Jane Doe",
@@ -22,11 +24,12 @@ const Post = () => {
             <div className="profile-image">
                 <img src={profilePicture} />
             </div>
+            <div className="content-heading-wrapper">
+                <h2>{postObject.author}</h2>
+                <p className="heading-date">on {postObject.date}</p>
+            </div>
             <div className="content">
-                <div className="content-heading-wrapper">
-                    <h2>{postObject.author}</h2>
-                    <p>on {postObject.date}</p>
-                </div>
+
                 <div className="content-body-wrapper">
                     <p>{postObject.body}</p>
                 </div>
@@ -39,6 +42,14 @@ const Post = () => {
                     </div>
                     <div className="comments-numbers">{postObject.comments.length} Comments<button className="show-comments-button">(show)</button></div>
                 </div>
+            </div>
+            <div className="comments-wrapper">
+                {postObject.comments.map((comment: string) => {
+                    return (
+                        <p>{comment}</p>
+                    )
+                })
+                }
             </div>
         </div>
     )

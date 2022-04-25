@@ -5,12 +5,23 @@ div.post-wrapper {
     border: 2px solid grey;
     padding: 1rem;
     border-radius: 3px;
+    flex-wrap: wrap;
 }
 
-div.content-heading-wrapper h2s {
+div.content-heading-wrapper {
+    padding: 1rem 1rem;
+    text-align: left;
+}
+
+div.content-heading-wrapper h2 {
     margin: 0;
 }
 
+p.heading-date{
+    margin:0;
+    font-style: italic;
+    font-size: .8rem;
+}
 div.profile-image img {
     height: 6rem;
     width: 6rem;
@@ -30,4 +41,8 @@ div.engagement-wrapper {
 
 div.comments-numbers {
     margin: 0 1rem;
+}
+
+div.comments-wrapper{
+    width:100%;
 }
