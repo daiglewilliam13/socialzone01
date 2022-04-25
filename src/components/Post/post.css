@@ -51,8 +51,9 @@ div.comments-wrapper{
 }
 
 div.expanded {
-    max-height:1000vh;
+    max-height:500px;
     transition: .2s;
+    overflow-y: scroll;
 }
 
 div.collapsed {

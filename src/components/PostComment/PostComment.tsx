@@ -1,5 +1,5 @@
 import React from "react";
-
+import './postcomment.css';
 interface CommentProps {
     comment:{
         authorId: number,
