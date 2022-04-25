@@ -51,7 +51,7 @@ div.comments-wrapper{
 }
 
 div.expanded {
-    max-height:500px;
+    max-height:200px;
     transition: .2s;
     overflow-y: scroll;
 }

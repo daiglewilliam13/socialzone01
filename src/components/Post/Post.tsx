@@ -34,6 +34,25 @@ const postObject = {
             authorId: 23,
             date: "Sat, Jun 11th @ 11:34am",
             text: "Lorem ipsum, dolor sit amet consectetur adipisicing elit."
+        }, {
+            authorId: 23,
+            date: "Sat, Jun 11th @ 11:34am",
+            text: "Lorem ipsum, dolor sit amet consectetur adipisicing elit."
+        },
+        {
+            authorId: 23,
+            date: "Sat, Jun 11th @ 11:34am",
+            text: "Lorem ipsum, dolor sit amet consectetur adipisicing elit."
+        },
+        {
+            authorId: 23,
+            date: "Sat, Jun 11th @ 11:34am",
+            text: "Lorem ipsum, dolor sit amet consectetur adipisicing elit."
+        },
+        {
+            authorId: 23,
+            date: "Sat, Jun 11th @ 11:34am",
+            text: "Lorem ipsum, dolor sit amet consectetur adipisicing elit."
         }],
     likes: 35,
     likedBy: [12, 234, 23, 123],
