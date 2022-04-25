@@ -46,3 +46,13 @@ div.comments-numbers {
 div.comments-wrapper{
     width:100%;
 }
+
+div.expanded {
+    max-height:1000vh;
+    transition: .2s;
+}
+
+div.collapsed {
+    max-height:0;
+    transition: .2s;
+}
