@@ -39,7 +39,7 @@ const Post = () => {
                     <p>{postObject.body}</p>
                 </div>
                 <div className="reply-wrapper">
-                    <p>REPLY COMPONENT</p>
+                    <Reply />
                 </div>
                 <div className="engagement-wrapper">
                     <div className="vote-wrapper">
