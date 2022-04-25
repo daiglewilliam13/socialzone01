@@ -1,13 +1,20 @@
 import React from "react";
 
 interface CommentProps {
-    props: string
+    comment:{
+        authorId: number,
+        date: string,
+        text: string
+    } 
 
 }
-const PostComment: FC<CommentProps> = (props: string) => {
+const PostComment: React.FC<CommentProps> = props => {
 
     return(
-        <p>{props}</p>
+        <div className="comment-reply-wrapper">
+        <p>By {props.comment.authorId} on {props.comment.date}</p>
+        <p>{props.comment.text}</p>
+        </div>
     )
 }
 

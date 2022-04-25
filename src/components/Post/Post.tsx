@@ -10,13 +10,36 @@ const postObject = {
     author: "Jane Doe",
     date: "Sat, Jun 11 @ 11:35am",
     body: "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Facere tempora culpa rem veniam a voluptatibus dolorem praesentium minima? Omnis nulla odio reprehenderit? Deserunt reiciendis fuga totam, atque molestiae omnis fugiat!",
-    comments: ["1", "2", "3", "4"],
+    comments: [{
+        authorId: 23,
+        date: "Sat, Jun 11th @ 11:34am",
+        text: "Lorem ipsum, dolor sit amet consectetur adipisicing elit."
+    }, 
+    {
+            authorId: 23,
+            date: "Sat, Jun 11th @ 11:34am",
+            text: "Lorem ipsum, dolor sit amet consectetur adipisicing elit."
+        },
+        {
+            authorId: 23,
+            date: "Sat, Jun 11th @ 11:34am",
+            text: "Lorem ipsum, dolor sit amet consectetur adipisicing elit."
+        },
+        {
+            authorId: 23,
+            date: "Sat, Jun 11th @ 11:34am",
+            text: "Lorem ipsum, dolor sit amet consectetur adipisicing elit."
+        },
+        {
+            authorId: 23,
+            date: "Sat, Jun 11th @ 11:34am",
+            text: "Lorem ipsum, dolor sit amet consectetur adipisicing elit."
+        }],
     likes: 35,
     likedBy: [12, 234, 23, 123],
     dislikes: 3,
     dislikedBy: [25, 2, 14]
 }
-
 
 const Post = () => {
     const [expandComments, setExpandComments] = useState(false);
@@ -49,7 +72,7 @@ const Post = () => {
                 </div>
             </div>
             <div className={`comments-wrapper ${commentsClassStr}`}>
-                {postObject.comments.map((comment: string) => {
+                {postObject.comments.map((comment) => {
                     return (
                         <PostComment comment={comment} />
                     )
