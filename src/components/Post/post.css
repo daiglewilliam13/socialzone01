@@ -1,0 +1,25 @@
+div.post-wrapper {
+    display:flex;
+    width: 60%;
+    margin: 1rem auto;
+    border: 2px solid grey;
+    padding: 1rem;
+    border-radius: 3px;
+}
+
+div.profile-image img {
+    height: 6rem;
+    width: 6rem;
+    border-radius: 50%;
+}
+div.content {
+    padding: 0 1rem;
+    text-align: left;
+}
+.vote-icon {
+    align-self: center;
+}
+
+div.engagement-wrapper {
+    display: flex;
+}
