@@ -27,3 +27,7 @@ div.content {
 div.engagement-wrapper {
     display: flex;
 }
+
+div.comments-numbers {
+    margin: 0 1rem;
+}
