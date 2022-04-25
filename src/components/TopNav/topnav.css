@@ -3,7 +3,9 @@
     div#topnav {
         background-color:#C3B6F6;
         height: 3rem;
-
+        position: absolute;
+        top:0;
+        width: 100%;
     }
     div#top-link-wrapper{
         display: flex;

@@ -4,7 +4,9 @@ import './createpost.css';
 const CreatePost = () => {
     
     return(
-        <p>create post</p>
+        <div id="create-post-wrapper">
+            CREATE POST 
+        </div>
     )
 }
 
