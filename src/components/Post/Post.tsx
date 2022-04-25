@@ -1,5 +1,8 @@
 import React from "react";
 import profilePicture from '../../images/jane-doe.jpg';
+import {BiDownArrow, BiUpArrow} from 'react-icons/bi';
+
+
 const Post = () => {
 
     return(
@@ -18,8 +21,10 @@ const Post = () => {
                 <p>REPLY COMPONENT</p>
             </div>
             <div className="engagement-wrapper">
-            
+            <BiDownArrow /><BiUpArrow />
             </div>    
         </div>
     )
 }
+
+export default Post;
