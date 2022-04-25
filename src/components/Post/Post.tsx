@@ -51,7 +51,7 @@ const Post = () => {
             <div className={`comments-wrapper ${commentsClassStr}`}>
                 {postObject.comments.map((comment: string) => {
                     return (
-                        <p>{comment}</p>
+                        <PostComment comment={comment} />
                     )
                 })
                 }

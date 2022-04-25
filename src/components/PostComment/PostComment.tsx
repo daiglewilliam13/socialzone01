@@ -1,11 +1,13 @@
 import React from "react";
 
-const comment = "1";
+interface CommentProps {
+    props: string
 
-const PostComment = (props: object) => {
+}
+const PostComment: FC<CommentProps> = (props: string) => {
 
     return(
-        <p>{comment}</p>
+        <p>{props}</p>
     )
 }
 
