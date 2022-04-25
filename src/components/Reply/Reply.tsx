@@ -5,7 +5,7 @@ const Reply = () =>{
 
     return(
         <div className="reply-input-wrapper">
-        <textarea className="post-reply"></textarea>
+        <textarea placeholder="Type your reply here..."className="post-reply"></textarea>
         <button className="post-reply-submit">Reply</button>
         </div>
     )

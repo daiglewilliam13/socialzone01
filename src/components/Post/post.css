@@ -28,6 +28,7 @@ div.profile-image img {
     border-radius: 50%;
 }
 div.content {
+    max-width: 90%;;
     padding: 0 1rem;
     text-align: left;
 }
