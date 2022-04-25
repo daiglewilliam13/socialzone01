@@ -43,7 +43,7 @@ const Post = () => {
                     <div className="vote-wrapper">
                         <BiUpArrow className="vote-icon" />{postObject.likes} : <BiDownArrow className="vote-icon" />{postObject.dislikes}
                     </div>
-                    <div className="comments-numbers">{postObject.comments.length} Comments<button onClick={showComments}className="show-comments-button">(show)</button></div>
+                    <div className="comments-numbers">{postObject.comments.length} Comments<button onClick={showComments}className="show-comments">{expandComments? "hide" : "show"}</button></div>
                 </div>
             </div>
             <div className={`comments-wrapper ${commentsClassStr}`}>

@@ -45,6 +45,7 @@ div.comments-numbers {
 
 div.comments-wrapper{
     width:100%;
+    overflow: hidden;
 }
 
 div.expanded {
@@ -55,4 +56,13 @@ div.expanded {
 div.collapsed {
     max-height:0;
     transition: .2s;
+}
+
+button.show-comments{
+    background-color: #C1B5F2;
+    border: none;
+    color: white;
+    margin: 0 1rem;
+    border-radius: 3px;
+    cursor: pointer;
 }
