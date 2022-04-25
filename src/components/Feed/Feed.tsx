@@ -8,7 +8,7 @@ const Feed = () => {
         <>
             <div id="main-feed-wrapper">
                 <div id="border-wrapper">
-                    <h1>Latest Feed</h1><div id="border-line"></div>
+                    <h1>Live Feed</h1><div id="border-line"></div>
                 </div>
                 <div className="feed-posts">
                 <Post />
