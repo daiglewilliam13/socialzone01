@@ -1,4 +1,4 @@
 div.home-wrapper {
     display: grid;
-    grid-template-columns: auto auto auto;
+    grid-template-columns: 90% 10%;
 }

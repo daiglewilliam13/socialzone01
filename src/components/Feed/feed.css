@@ -1,3 +1,8 @@
+div#main-feed-wrapper {
+    grid-column-start: 1;
+    grid-column-end: 2;
+}
+
 div#border-wrapper {
     display:flex;
     padding: 0 4rem;

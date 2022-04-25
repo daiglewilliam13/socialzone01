@@ -1,10 +1,11 @@
 import React from "react";
 import Friend from "../Friend/Friend";
+import './friendlist.css';
 
 const FriendList = () =>{
 
     return(
-        <div className="friend-list-wapper">
+        <div className="friend-list-wrapper">
             <Friend />
             <Friend />
             <Friend />
@@ -12,7 +13,12 @@ const FriendList = () =>{
             <Friend />
             <Friend />
             <Friend />
-
+            <Friend />
+            <Friend />
+            <Friend />
+            <Friend />
+            <Friend />
+            <Friend />
         </div>
     )
 }
