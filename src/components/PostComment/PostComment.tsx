@@ -12,8 +12,8 @@ const PostComment: React.FC<CommentProps> = props => {
 
     return(
         <div className="comment-reply-wrapper">
-        <p>By {props.comment.authorId} on {props.comment.date}</p>
-        <p>{props.comment.text}</p>
+        <p className="comment-heading">By {props.comment.authorId} on {props.comment.date}</p>
+        <p className="comment-body">{props.comment.text}</p>
         </div>
     )
 }
