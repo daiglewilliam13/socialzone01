@@ -3,6 +3,17 @@ import profilePicture from '../../images/jane-doe.jpg';
 import { BiDownArrow, BiUpArrow } from 'react-icons/bi';
 import './post.css';
 
+const postObject = {
+    author: "Jane Doe",
+    date: "Sat, Jun 11 @ 11:35am",
+    body: "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Facere tempora culpa rem veniam a voluptatibus dolorem praesentium minima? Omnis nulla odio reprehenderit? Deserunt reiciendis fuga totam, atque molestiae omnis fugiat!",
+    comments: ["1", "2", "3", "4"],
+    likes: 35,
+    likedBy: [12,234,23,123],
+    dislikes: 3,
+    dislikedBy: [25,2,14]
+}
+
 
 const Post = () => {
 
@@ -17,7 +28,7 @@ const Post = () => {
                     <p>on Sat, Jun 11 @ 11:35am</p>
                 </div>
                 <div className="content-body-wrapper">
-                    <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Facere tempora culpa rem veniam a voluptatibus dolorem praesentium minima? Omnis nulla odio reprehenderit? Deserunt reiciendis fuga totam, atque molestiae omnis fugiat!</p>
+                    <p></p>
                 </div>
                 <div className="reply-wrapper">
                     <p>REPLY COMPONENT</p>
