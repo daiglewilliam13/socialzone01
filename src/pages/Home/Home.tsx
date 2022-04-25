@@ -6,7 +6,7 @@ const Home = () => {
     return (
         <>
         <TopNav />
-        <p>Home Page Works</p>
+        <SideNav />
         </>
     )
 }

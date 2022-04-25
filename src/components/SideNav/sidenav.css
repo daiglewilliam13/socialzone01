@@ -1,0 +1,7 @@
+@media screen and (min-width: 585px) {
+    div#sidenav{
+        width: 20rem;
+        background-color: #C3B6F6;
+        margin:0;
+    }
+}
