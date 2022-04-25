@@ -1,7 +1,7 @@
 import React from 'react';
 import './sidenav.css';
 import { useState } from 'react';
-import { FaChevronLeft, FaChevronRight } from 'react-icons/fa';
+import { FaChevronLeft} from 'react-icons/fa';
 
 
 const SideNav = () => {
