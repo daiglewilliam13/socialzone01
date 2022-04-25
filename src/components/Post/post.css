@@ -7,6 +7,10 @@ div.post-wrapper {
     border-radius: 3px;
 }
 
+div.content-heading-wrapper h2s {
+    margin: 0;
+}
+
 div.profile-image img {
     height: 6rem;
     width: 6rem;

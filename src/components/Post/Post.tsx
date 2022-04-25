@@ -13,7 +13,7 @@ const Post = () => {
             </div>
             <div className="content">
                 <div className="content-heading-wrapper">
-                    <h3>Jane Doe</h3>
+                    <h2>Jane Doe</h2>
                     <p>on Sat, Jun 11 @ 11:35am</p>
                 </div>
                 <div className="content-body-wrapper">
@@ -26,6 +26,7 @@ const Post = () => {
                     <p>
                         <BiDownArrow className="vote-icon" />23 : <BiUpArrow className="vote-icon" />2
                     </p>
+                    <p>14 Comments <button className="show-comments-button">(show)</button></p>
                 </div>
             </div>
         </div>
