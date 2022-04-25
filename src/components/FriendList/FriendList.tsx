@@ -6,6 +6,47 @@ const FriendList = () =>{
 
     return(
         <div className="friend-list-wrapper">
+        <div className="friend-list-header">
+            <p>Your Friends:</p>
+        </div>
+            <Friend />
+            <Friend />
+            <Friend />
+            <Friend />
+            <Friend />
+            <Friend />
+            <Friend />
+            <Friend />
+            <Friend />
+            <Friend />
+            <Friend />
+            <Friend />
+            <Friend />
+            <Friend />
+            <Friend />
+            <Friend />
+            <Friend />
+            <Friend />
+            <Friend />
+            <Friend />
+            <Friend />
+            <Friend />
+            <Friend />
+            <Friend />
+            <Friend />
+            <Friend />
+            <Friend />
+            <Friend />
+            <Friend />
+            <Friend />
+            <Friend />
+            <Friend />
+            <Friend />
+            <Friend />
+            <Friend />
+            <Friend />
+            <Friend />
+            <Friend />
             <Friend />
             <Friend />
             <Friend />

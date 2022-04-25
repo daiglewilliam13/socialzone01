@@ -10,8 +10,8 @@ const Home = () => {
     return (
         <>
         <TopNav />
-        <div className="home-wrapper">
         <SideNav />
+        <div className="home-wrapper">
         <CreatePost />
         <Feed />
         <FriendList />

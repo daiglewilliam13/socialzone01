@@ -6,4 +6,9 @@ div.friend-list-wrapper {
     position: sticky;
     top: 3rem;
     align-self: start;
+    overflow-y: scroll;
+    height:100vh;
+}
+
+div.friend-list-header p{
 }

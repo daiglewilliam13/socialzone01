@@ -1,11 +1,10 @@
 div#create-post-wrapper {
-    margin: 5rem 13rem;
+    margin: 5rem 2rem 0 5rem;
     border: 2px solid grey;
     border-radius: 5px;
     padding: 1rem;
-    width: calc(100% - 19rem);
-    grid-column: 1 2;
-    grid-row: 1 2;
+    grid-column-start: 1;
+    grid-column-end: 2;
 }
 
 div#create-post-wrapper p {
