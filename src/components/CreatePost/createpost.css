@@ -4,6 +4,8 @@ div#create-post-wrapper {
     border-radius: 5px;
     padding: 1rem;
     width: calc(100% - 19rem);
+    grid-column: 1 2;
+    grid-row: 1 2;
 }
 
 div#create-post-wrapper p {
