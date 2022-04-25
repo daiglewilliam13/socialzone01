@@ -6,7 +6,7 @@ import img from '../../images/john-doe.jpg';
 const TopNav = () => {
     return (
         <div id="topnav">
-            <div id="link-wrapper">
+            <div id="top-link-wrapper">
                 <div className="left-group">
                     <FaStaylinked className="topnav-icon " />
                     <input type="text" id="search-bar" placeholder='Search...'></input>
