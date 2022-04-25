@@ -65,4 +65,10 @@ button.show-comments{
     margin: 0 1rem;
     border-radius: 3px;
     cursor: pointer;
+    transition: .2s;
+}
+
+button.show-comments:hover {
+    background-color: #a089ff;
+    transition: .2s;
 }
