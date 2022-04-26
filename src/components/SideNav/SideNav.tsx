@@ -18,8 +18,6 @@ const SideNav = () => {
                     <p>Friends</p>
                     <p>Messages</p>
                     <p>Notifications</p>
-                    <p>Chatrooms</p>
-                    <p>Forums</p>
                     <p>Profile</p>
                 </div>
             </div>
