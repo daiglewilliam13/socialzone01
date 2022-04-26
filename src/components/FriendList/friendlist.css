@@ -10,5 +10,6 @@ div.friend-list-wrapper {
     height:100vh;
 }
 
-div.friend-list-header p{
+input.friend-search{
+    width: 10rem;
 }
