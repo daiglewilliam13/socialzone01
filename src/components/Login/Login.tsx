@@ -5,6 +5,9 @@ import { useNavigate } from 'react-router-dom';
 
 
 const Login = () => {
+    const handleLogin = () => {
+        
+    }
 
     const navigate = useNavigate();
     return(
