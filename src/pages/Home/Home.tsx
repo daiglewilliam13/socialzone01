@@ -5,6 +5,8 @@ import CreatePost from '../../components/CreatePost/CreatePost';
 import Feed from '../../components/Feed/Feed';
 import FriendList from '../../components/FriendList/FriendList';
 import './home.css';
+import { useNavigate } from 'react-router-dom';
+import { useDispatch, useSelector } from 'react-redux';
 
 const Home = () => {
     return (
