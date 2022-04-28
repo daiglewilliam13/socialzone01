@@ -1,10 +1,12 @@
-import React from 'react';
+import React, {useState} from 'react';
 import './login.css';
 import { FaGoogle, FaFacebook } from 'react-icons/fa';
 import { useNavigate } from 'react-router-dom';
 
 
 const Login = () => {
+    const [username, setUsername] = useState("");
+    const [password, setPassword] = useState("");
     const handleLogin = () => {
         
     }
