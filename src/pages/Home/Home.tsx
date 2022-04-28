@@ -9,6 +9,7 @@ import { useNavigate } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 
 const Home = () => {
+    const user = useSelector((state: userState)=> state.user)
     return (
         <>
         <TopNav />
