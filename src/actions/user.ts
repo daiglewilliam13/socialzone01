@@ -1,1 +1,1 @@
-export interface action {type: String, payLoad: String}
+export interface action {type: 'login', payload: String}

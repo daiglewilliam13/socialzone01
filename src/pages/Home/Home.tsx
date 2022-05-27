@@ -7,9 +7,12 @@ import FriendList from '../../components/FriendList/FriendList';
 import './home.css';
 import { useNavigate } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
+import { RootState } from '../../app/rootReducer';
 
 const Home = () => {
-    const user = useSelector((state: userState)=> state.user)
+    const user = useSelector((state: RootState)=> state.userReducer)
+    console.log(user)
+
     return (
         <>
         <TopNav />
