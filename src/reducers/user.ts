@@ -2,7 +2,7 @@ import { action } from '../actions/user';
 
 export interface userState { username: String }
 
-let initialState: userState = { username: "TEST NAME" }
+let initialState: userState = { username: "GUEST" }
 
 export const userReducer = (state = initialState, action: action) => {
     switch (action.type) {
