@@ -8,7 +8,7 @@ let initialState = {
 export const userReducer = (state = initialState, action: action) => {
     switch (action.type) {
         case 'login':
-            return { ...state, username: action.payload };
+            return { username: action.payload };
         default:
             return state;
     }

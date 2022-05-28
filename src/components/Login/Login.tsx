@@ -14,7 +14,7 @@ const Login = () => {
     const handleLogin = (username: String) => {
         console.log(username)
             dispatch({
-                type: String,
+                type: 'login',
                 payload: username
             })
         navigate('/home')

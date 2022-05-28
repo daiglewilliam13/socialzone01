@@ -1,5 +1,5 @@
 import React from "react";
-import './reply.css';
+import './Reply.css';
 
 const Reply = () =>{
 
