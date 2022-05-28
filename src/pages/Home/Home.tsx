@@ -10,8 +10,8 @@ import { useDispatch, useSelector } from 'react-redux';
 import { RootState } from '../../app/store';
 
 const Home = () => {
-    const user = useSelector((state:RootState)=> state.userReducer)
-    console.log(user['username'])
+    const user: {username?: String} = useSelector((state:RootState)=> state.userReducer)
+    console.log(user.username)
 
     return (
         <>
