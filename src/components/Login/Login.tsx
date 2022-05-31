@@ -12,7 +12,7 @@ const Login = () => {
     const [username, setUsername] = useState("");
     const [password, setPassword] = useState("");
     const handleLogin = (username: String) => {
-        console.log(username)
+        console.log(`attempting to log in as ${username}`)
             dispatch({
                 type: 'login',
                 payload: username
