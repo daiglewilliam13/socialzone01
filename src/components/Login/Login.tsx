@@ -3,20 +3,17 @@ import './login.css';
 import { FaGoogle, FaFacebook } from 'react-icons/fa';
 import { useNavigate } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
-import { Dispatch } from 'redux';
+import { loginUser } from '../../reducers/user';
 
 
 const Login = () => {
     const navigate = useNavigate();
     const dispatch = useDispatch();
-    const [username, setUsername] = useState("");
+    const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
-    const handleLogin = (username: String) => {
+    const handleLogin = (username: string, password: string) => {
         console.log(`attempting to log in as ${username}`)
-            dispatch({
-                type: 'login',
-                payload: username
-            })
+            dispatch(loginUser({email,password}))
         navigate('/home')
     }
 
@@ -31,10 +28,10 @@ const Login = () => {
             <div className="form-wrapper" id="login-form">
                 <form>
                     <label htmlFor="email">Email Address:</label>
-                    <input placeholder='email@example.com' type="text" name="email" onChange={(e)=>{setUsername(e.target.value)}}></input>
+                    <input placeholder='email@example.com' type="text" name="email" onChange={(e)=>{setEmail(e.target.value)}}></input>
                     <label htmlFor="password">Password:</label>
-                    <input placeholder='Password' type="password" name="password"></input>
-                    <button type='submit' id="login-button" onClick={()=>handleLogin(username)}>Log in</button>
+                    <input placeholder='Password' type="password" name="password" onChange={(e)=>{setPassword(e.target.value)}}></input>
+                    <button type='submit' id="login-button" onClick={()=>handleLogin(email, password)}>Log in</button>
                 </form>
             </div>
             <hr></hr>
