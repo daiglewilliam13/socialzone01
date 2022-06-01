@@ -14,10 +14,10 @@ const Login = () => {
     console.log(loginStatus)
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
-    const handleLogin = (username: string, password: string) => {
+    const handleLogin = async ( username: string, password: string) => {
         console.log(`attempting to log in as ${username}`)
-        loginUser({email, password})
-        
+        dispatch(loginUser({email, password}));
+        navigate('/home')
     }
     return(
     <div id="login-wrapper">

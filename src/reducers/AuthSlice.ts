@@ -24,7 +24,7 @@ export const loginUser = createAsyncThunk('loginUser', async (data: {email:strin
             })
         }
         )
-        return response.json()
+        return (await response.json())
     } catch (err) {
             console.log(err)
         }
