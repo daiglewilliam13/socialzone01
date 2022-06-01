@@ -5,7 +5,16 @@ import {RootState } from '../app/store';
 let initialState = {
     isLoggedIn: false,
     userInfo: {
-    name: "GUEST" 
+        user:{
+            name: "GUEST",
+            email: "",
+            friends: [],
+            id: "",
+            isEmailVerified: false,
+            role: "user",
+            timelineComments: [],
+            timelinePosts: [], 
+        }
 },
     status:"idle",
     error: "",
@@ -44,7 +53,8 @@ const authSlice = createSlice({
         .addCase(loginUser.fulfilled, (state, action)=>{
             state.status = "login successful";
             state.isLoggedIn = true
-            state.userInfo = {...state = action.payload};
+            console.log(action.payload)
+            state.userInfo = {...state.userInfo = action.payload}
         })
         .addCase(loginUser.rejected,(state, action)=>{
             state.status = "login failure"

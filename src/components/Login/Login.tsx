@@ -10,8 +10,6 @@ import { RootState } from '../../app/store';
 const Login = () => {
     const navigate = useNavigate();
     const dispatch = useDispatch();
-    const loginStatus = useSelector((state: RootState) => state.authStatus.isLoggedIn)
-    console.log(loginStatus)
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
     const handleLogin = async ( username: string, password: string) => {
@@ -36,7 +34,6 @@ const Login = () => {
                     <button type='submit' id="login-button" onClick={()=>handleLogin(email, password)}>Log in</button>
                 </form>
             </div>
-            <p>{loginStatus}</p>
             <hr></hr>
             <div id="other-auth-wrapper">
                 <p>Or log in with:</p>
