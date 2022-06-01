@@ -4,19 +4,15 @@ import {RootState } from '../app/store';
 
 let initialState = {
     isLoggedIn: {
-        type: Boolean,
         value: false
     },
     user: {
-        type: String,
     username: "GUEST" 
 },
     status: {
-        type: String,
         message: "idle",
     },
     error: {
-        type: String,
         message: "",
     }
 }
@@ -50,7 +46,6 @@ const authSlice = createSlice({
         })
         .addCase(loginUser.fulfilled, (state, action)=>{
             state.status.message = "login successful";
-            console.log(action.payload)
             state = {...state = action.payload};
         })
         .addCase(loginUser.rejected,(state, action)=>{
