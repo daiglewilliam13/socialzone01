@@ -11,12 +11,13 @@ const Login = () => {
     const navigate = useNavigate();
     const dispatch = useDispatch();
     const loginStatus = useSelector((state: RootState) => state.authStatus.isLoggedIn)
+    console.log(loginStatus)
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
     const handleLogin = (username: string, password: string) => {
         console.log(`attempting to log in as ${username}`)
-        dispatch(loginUser({email,password}))
-        navigate('/home');
+        loginUser({email, password})
+        
     }
     return(
     <div id="login-wrapper">
@@ -35,6 +36,7 @@ const Login = () => {
                     <button type='submit' id="login-button" onClick={()=>handleLogin(email, password)}>Log in</button>
                 </form>
             </div>
+            <p>{loginStatus}</p>
             <hr></hr>
             <div id="other-auth-wrapper">
                 <p>Or log in with:</p>
