@@ -3,7 +3,7 @@ import './login.css';
 import { FaGoogle, FaFacebook } from 'react-icons/fa';
 import { useNavigate } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
-import { loginUser } from '../../reducers/user';
+import { loginUser } from '../../reducers/AuthSlice';
 
 
 const Login = () => {
