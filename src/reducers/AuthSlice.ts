@@ -3,8 +3,19 @@ import { action } from '../actions/user';
 import {RootState } from '../app/store';
 
 let initialState = {
+
     isLoggedIn: false,
     userInfo: {
+        tokens: {
+            access: {
+                token: "",
+                expires: ""
+            },
+            refresh: {
+                token: "",
+                expires: ""
+            },
+        },
         user:{
             name: "GUEST",
             email: "",
