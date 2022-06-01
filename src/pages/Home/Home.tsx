@@ -10,7 +10,8 @@ import { useDispatch, useSelector } from 'react-redux';
 import { RootState } from '../../app/store';
 
 const Home = () => {
-    const user: {username?: String} = useSelector((state:RootState)=> state.userReducer)
+    const user = useSelector((state:RootState)=> state.user.user);
+    console.log(user)
     return (
         <>
         <TopNav />

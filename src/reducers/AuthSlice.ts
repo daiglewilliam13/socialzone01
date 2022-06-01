@@ -18,7 +18,7 @@ let initialState = {
 }
 
 export const loginUser = createAsyncThunk('userLogin', async (data: {email:string, password:string}) => {
-        const response = await fetch('localhost:8080/v1/auth/login', {
+        const response = await fetch('http://localhost:8080/v1/auth/login', {
             method: 'POST',
             mode: 'cors',
             headers: {
@@ -33,15 +33,6 @@ export const loginUser = createAsyncThunk('userLogin', async (data: {email:strin
         return (await response.json())
     }
 )
-
-// export const userReducer = (state = initialState, action: action) => {
-//     switch (action.type) {
-//         case 'login':
-//             return { username: action.payload };
-//         default:
-//             return state;
-//     }
-// }
 
 const userSlice = createSlice({
     name: 'user',
