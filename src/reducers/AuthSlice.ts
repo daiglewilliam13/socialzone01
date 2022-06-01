@@ -34,8 +34,8 @@ export const loginUser = createAsyncThunk('userLogin', async (data: {email:strin
     }
 )
 
-const userSlice = createSlice({
-    name: 'user',
+const authSlice = createSlice({
+    name: 'AuthStatus',
     initialState,
     reducers: {
     },
@@ -46,7 +46,7 @@ const userSlice = createSlice({
         })
         .addCase(loginUser.fulfilled, (state, action)=>{
             state.status.message = "login successful";
-            state.user = {...state.user, ...action.payload};
+            state = {...state, ...action.payload};
         })
         .addCase(loginUser.rejected,(state, action)=>{
             state.status.message = "login failure"
@@ -55,4 +55,4 @@ const userSlice = createSlice({
     }
 })
 
-export default userSlice.reducer;
+export default authSlice.reducer;
