@@ -2,18 +2,20 @@ import React, {useState} from 'react';
 import './login.css';
 import { FaGoogle, FaFacebook } from 'react-icons/fa';
 import { useNavigate } from 'react-router-dom';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { loginUser } from '../../reducers/AuthSlice';
+import { RootState } from '../../app/store';
 
 
 const Login = () => {
     const navigate = useNavigate();
     const dispatch = useDispatch();
+    const loginStatus = useSelector((state: RootState) => state.authStatus.user)
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
     const handleLogin = (username: string, password: string) => {
         console.log(`attempting to log in as ${username}`)
-            dispatch(loginUser({email,password}))
+        dispatch(loginUser({email,password}))
         navigate('/home')
     }
 
@@ -37,7 +39,7 @@ const Login = () => {
             <hr></hr>
             <div id="other-auth-wrapper">
                 <p>Or log in with:</p>
-                <button onClick={()=>navigate('/home')} id="google-login"><FaGoogle className="login-icon" />Google</button>
+                <button id="google-login"><FaGoogle className="login-icon" />Google</button>
                 <button id="facebook-login"><FaFacebook className="login-icon"/>Facebook</button>
                 <div id="signup-wrapper">
                     <p>New User? <a href="#">Register Here!</a></p>

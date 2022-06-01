@@ -2,7 +2,11 @@ import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 import { action } from '../actions/user';
 import {RootState } from '../app/store';
 
-let initialState = { 
+let initialState = {
+    isLoggedIn: {
+        type: Boolean,
+        value: false
+    },
     user: {
         type: String,
     username: "GUEST" 
