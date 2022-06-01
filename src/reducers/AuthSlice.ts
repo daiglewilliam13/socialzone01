@@ -5,14 +5,14 @@ import {RootState } from '../app/store';
 let initialState = {
     isLoggedIn: false,
     userInfo: {
-    username: "GUEST" 
+    name: "GUEST" 
 },
     status:"idle",
     error: "",
 }
 
-export const loginUser = createAsyncThunk('userLogin', async (data: {email:string, password:string}) => {
-        const response = await fetch('http://localhost:8080/v1/auth/login', {
+export const loginUser = createAsyncThunk('loginUser', async (data: {email:string, password:string}) => {
+        try{const response = await fetch('http://localhost:8080/v1/auth/login', {
             method: 'POST',
             mode: 'cors',
             headers: {
@@ -24,7 +24,10 @@ export const loginUser = createAsyncThunk('userLogin', async (data: {email:strin
             })
         }
         )
-        return (await response.json())
+        return response.json()
+    } catch (err) {
+            console.log(err)
+        }
     }
 )
 
