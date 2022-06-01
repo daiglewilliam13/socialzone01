@@ -3,18 +3,12 @@ import { action } from '../actions/user';
 import {RootState } from '../app/store';
 
 let initialState = {
-    isLoggedIn: {
-        value: false
-    },
-    user: {
+    isLoggedIn: false,
+    userInfo: {
     username: "GUEST" 
 },
-    status: {
-        message: "idle",
-    },
-    error: {
-        message: "",
-    }
+    status:"idle",
+    error: "",
 }
 
 export const loginUser = createAsyncThunk('userLogin', async (data: {email:string, password:string}) => {
@@ -42,15 +36,16 @@ const authSlice = createSlice({
     extraReducers: builder =>{
         builder
         .addCase(loginUser.pending, (state, action)=>{
-            state.status.message = "logging in";
+            state.status = "logging in";
         })
         .addCase(loginUser.fulfilled, (state, action)=>{
-            state.status.message = "login successful";
-            state = {...state = action.payload};
+            state.status = "login successful";
+            state.isLoggedIn = true
+            state.userInfo = {...state = action.payload};
         })
         .addCase(loginUser.rejected,(state, action)=>{
-            state.status.message = "login failure"
-            state.error.message = JSON.stringify(action.error.message);
+            state.status = "login failure"
+            state.error = JSON.stringify(action.error.message);
         })
     }
 })

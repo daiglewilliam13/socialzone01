@@ -10,15 +10,14 @@ import { RootState } from '../../app/store';
 const Login = () => {
     const navigate = useNavigate();
     const dispatch = useDispatch();
-    const loginStatus = useSelector((state: RootState) => state.authStatus.user)
+    const loginStatus = useSelector((state: RootState) => state.authStatus.isLoggedIn)
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
     const handleLogin = (username: string, password: string) => {
         console.log(`attempting to log in as ${username}`)
         dispatch(loginUser({email,password}))
-        navigate('/home')
+        navigate('/home');
     }
-
     return(
     <div id="login-wrapper">
         <div id="login-text-wrapper">
