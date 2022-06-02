@@ -2,10 +2,8 @@ import React, { useState } from 'react';
 import './login.css';
 import { FaGoogle, FaFacebook } from 'react-icons/fa';
 import { useNavigate } from 'react-router-dom';
-import { useDispatch, useSelector } from 'react-redux';
 import { loginUser } from '../../reducers/AuthSlice';
-import { RootState, useAppDispatch } from '../../app/store';
-import { unwrapResult } from '@reduxjs/toolkit';
+import { useAppDispatch } from '../../app/store';
 
 
 const Login = () => {
