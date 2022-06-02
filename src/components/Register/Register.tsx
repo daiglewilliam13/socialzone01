@@ -25,7 +25,7 @@ const Register = () => {
         .then(res=>{
             if(res.code==400){
                 setError(res.message)
-            } else if(res.code==201) {
+            } else {
                 alert('profile created!')
                 navigate('/home')
             }
@@ -50,11 +50,11 @@ const Register = () => {
                         <label htmlFor="Confirm Password">Confirm Password:</label>
                         <input required placeholder='Confirm Password' type="password" name="password" onChange={(e) => { setPassword2(e.target.value) }}></input>
                         <p id="passwordMatch">{password === password2 ? "" : "Passwords do not match"}</p>
-                        <button type='submit' id="login-button"
+                        <button disabled={password ===password2 ? false : true} type='submit' id="login-button"
                             onClick={(e) => { handleRegister(e, email, password, name) }}>
                             {buttonText}
                         </button>
-                        <p>{error}</p>
+                        <p>{error? `Error: ${error}` : ""}</p>
                     </form>
                 </div>
                 <hr></hr>
