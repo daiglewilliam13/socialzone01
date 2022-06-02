@@ -13,3 +13,11 @@ div.display-switch{
     display: flex;
     justify-content:center;
 }
+
+button#register-view {
+    background: none;
+    border: none;
+    color: white;
+    text-decoration: underline;
+    font-size: 1rem;
+}

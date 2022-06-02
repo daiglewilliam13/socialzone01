@@ -16,7 +16,7 @@ const Landing = () => {
             : <Register />
         }
         <div className="display-switch">
-            <p>New Here?</p><button onClick={(e)=>handleClick(e)}>Register Here!</button>
+            <p>New Here?</p><button id="register-view"onClick={(e)=>handleClick(e)}>Register Here!</button>
         </div>
         </div>
         </>
