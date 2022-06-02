@@ -45,9 +45,6 @@ const Login = () => {
                     <p>Or log in with:</p>
                     <button id="google-login"><FaGoogle className="login-icon" />Google</button>
                     <button id="facebook-login"><FaFacebook className="login-icon" />Facebook</button>
-                    <div id="signup-wrapper">
-                        <p>New User? <a href="#">Register Here!</a></p>
-                    </div>
                 </div>
             </div>
         </div>
