@@ -7,7 +7,7 @@ import { RootState } from '../../app/store';
 
 const TopNav = () => {
     const authStatus = useSelector((state: RootState) => state.authStatus);
-    const username = authStatus.userInfo.user.name
+    const username = authStatus.auth.user.name
     return (
         <div id="topnav">
             <div id="top-link-wrapper">

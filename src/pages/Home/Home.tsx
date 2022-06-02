@@ -10,7 +10,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { RootState } from '../../app/store';
 
 const Home = () => {
-    const userInfo = useSelector((state:RootState)=> state.authStatus.userInfo);
+    const userInfo = useSelector((state:RootState)=> state.authStatus.auth);
     const navigate = useNavigate();
     console.log(userInfo)
     useEffect(()=>{

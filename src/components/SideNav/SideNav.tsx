@@ -10,7 +10,7 @@ import { useNavigate } from 'react-router-dom';
 const SideNav = () => {
     const navigate = useNavigate();
     const authStatus = useSelector((state: RootState) => state.authStatus);
-    const refreshToken = authStatus.userInfo.tokens.refresh.token;
+    const refreshToken = authStatus.auth.tokens.refresh.token;
     const [expanded, setExpanded] = useState(false);
     const sidenavStatus = expanded ? 'expanded' : 'collapsed';
     const moveSideBar = () => {
