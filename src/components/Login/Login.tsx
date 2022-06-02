@@ -4,28 +4,25 @@ import { FaGoogle, FaFacebook } from 'react-icons/fa';
 import { useNavigate } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { loginUser } from '../../reducers/AuthSlice';
-import { RootState } from '../../app/store';
+import { RootState, useAppDispatch } from '../../app/store';
+import { unwrapResult } from '@reduxjs/toolkit';
 
 
 const Login = () => {
-    let buttonOptions = {
-        disabled: false,
-        text: "Log In"
-    }
     const navigate = useNavigate();
-    const dispatch = useDispatch();
+    const dispatch = useAppDispatch();
     const [email, setEmail] = useState("");
-    const [password, setPassword] = useState("");
-    const [loading, setLoading] = useState(false);
+    const [password, setPassword] = useState("")
     const [buttonText, setButtonText] = useState("Log In")
-    const [isLoggedIn, setIsLoggedIn] = useState(useSelector((state: RootState) => state.authStatus.isLoggedIn));
-    const [status, setStatus] = useState(useSelector((state: RootState) => state.authStatus.status));
-    const handleLogin = async (username: string, password: string) => {
+    const handleLogin = async (e: any, username: string, password: string) => {
+        e.preventDefault();
         setButtonText("Logging In")
-        dispatch(loginUser({ email, password }));
+        dispatch(loginUser({ email, password })).unwrap().then((res)=>{
+            console.log(res)
+            navigate('/home')
+        })
 
     }
-    console.log(status)
     return (
         <div id="login-wrapper">
             <div id="login-text-wrapper">
@@ -40,7 +37,7 @@ const Login = () => {
                         <input placeholder='email@example.com' type="text" name="email" onChange={(e) => { setEmail(e.target.value) }}></input>
                         <label htmlFor="password">Password:</label>
                         <input placeholder='Password' type="password" name="password" onChange={(e) => { setPassword(e.target.value) }}></input>
-                        <button type='submit' id="login-button" onClick={() => handleLogin(email, password)}>{buttonText}</button>
+                        <button type='submit' id="login-button" onClick={(e) => handleLogin(e, email, password)}>{buttonText}</button>
                     </form>
                 </div>
                 <hr></hr>
