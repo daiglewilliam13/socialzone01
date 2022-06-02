@@ -12,6 +12,7 @@ const Register = () => {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
     const [password2, setPassword2] = useState("");
+    const [error, setError] = useState(null)
     const handleRegister = async (e: any, email: string, password: string, name: string) => {
         let newUserData = {
             "email": email,
@@ -22,8 +23,12 @@ const Register = () => {
         console.log(newUserData)
         dispatch(registerNewUser(newUserData)).unwrap()
         .then(res=>{
-            console.log(res);
-            navigate('/home')
+            if(res.code==400){
+                setError(res.message)
+            } else if(res.code==201) {
+                alert('profile created!')
+                navigate('/home')
+            }
         })
     }
     return (
@@ -49,6 +54,7 @@ const Register = () => {
                             onClick={(e) => { handleRegister(e, email, password, name) }}>
                             {buttonText}
                         </button>
+                        <p>{error}</p>
                     </form>
                 </div>
                 <hr></hr>
