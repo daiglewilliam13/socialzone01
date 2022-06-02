@@ -1,8 +1,12 @@
 import React, { useState } from "react";
 import { FaGoogle, FaFacebook } from 'react-icons/fa';
 import { useAppDispatch } from "../../app/store";
+import { useNavigate } from "react-router-dom";
+import { registerNewUser } from "../../reducers/AuthSlice";
 
 const Register = () => {
+    const dispatch = useAppDispatch();
+    const navigate = useNavigate();
     const [buttonText, setButtonText] = useState("Register");
     const [name, setName] = useState("");
     const [email, setEmail] = useState("");
@@ -16,7 +20,11 @@ const Register = () => {
         }
         e.preventDefault()
         console.log(newUserData)
-        
+        dispatch(registerNewUser(newUserData)).unwrap()
+        .then(res=>{
+            console.log(res);
+            navigate('/home')
+        })
     }
     return (
         <div id="login-wrapper">
