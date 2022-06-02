@@ -20,4 +20,5 @@ button#register-view {
     color: white;
     text-decoration: underline;
     font-size: 1rem;
+    cursor: pointer;
 }

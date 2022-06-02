@@ -8,6 +8,8 @@ const Landing = () => {
     const handleClick = (e:any) =>{
         setShowLogin(showLogin => !showLogin);
     }
+    let buttonText = showLogin ? "Register Here!" : "Log In";
+    let viewText = showLogin ? "New here?" : "Already have an account?";
     return(
         <>
         <div id="landing-wrapper">
@@ -16,7 +18,7 @@ const Landing = () => {
             : <Register />
         }
         <div className="display-switch">
-            <p>New Here?</p><button id="register-view"onClick={(e)=>handleClick(e)}>Register Here!</button>
+            <p>{viewText}</p><button id="register-view"onClick={(e)=>handleClick(e)}>{buttonText}</button>
         </div>
         </div>
         </>
