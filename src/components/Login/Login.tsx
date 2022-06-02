@@ -14,7 +14,7 @@ const Login = () => {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("")
     const [buttonText, setButtonText] = useState("Log In")
-    const handleLogin = async (e: any, username: string, password: string) => {
+    const handleLogin = async (e: any, email: string, password: string) => {
         e.preventDefault();
         setButtonText("Logging In")
         dispatch(loginUser({ email, password })).unwrap().then((res)=>{
@@ -34,9 +34,9 @@ const Login = () => {
                 <div className="form-wrapper" id="login-form">
                     <form>
                         <label htmlFor="email">Email Address:</label>
-                        <input placeholder='email@example.com' type="text" name="email" onChange={(e) => { setEmail(e.target.value) }}></input>
+                        <input required placeholder='email@example.com' type="text" name="email" onChange={(e) => { setEmail(e.target.value) }}></input>
                         <label htmlFor="password">Password:</label>
-                        <input placeholder='Password' type="password" name="password" onChange={(e) => { setPassword(e.target.value) }}></input>
+                        <input required placeholder='Password' type="password" name="password" onChange={(e) => { setPassword(e.target.value) }}></input>
                         <button type='submit' id="login-button" onClick={(e) => handleLogin(e, email, password)}>{buttonText}</button>
                     </form>
                 </div>
