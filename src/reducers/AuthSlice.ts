@@ -48,6 +48,23 @@ export const loginUser = createAsyncThunk('loginUser', async (data: { email: str
 }
 )
 
+export const registerNewUser = createAsyncThunk('registerNewUser', async (data: {email: string, password: string, name: string})=>{
+    const response = await fetch('http://localhost:8080/v1/auth/login',{
+        method:'POST',
+        mode: 'cors',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+            "email": data.email,
+            "password": data.password,
+            "name":data.name
+        })
+    }
+    )
+    return(await response.json())
+})
+
 const authSlice = createSlice({
     name: 'AuthStatus',
     initialState,
@@ -66,6 +83,19 @@ const authSlice = createSlice({
             })
             .addCase(loginUser.rejected, (state, action) => {
                 state.status = "login failure"
+                state.error = JSON.stringify(action.error.message);
+            })
+            .addCase(registerNewUser.pending, (state, action) => {
+                state.status = "registering";
+            })
+            .addCase(registerNewUser.fulfilled, (state, action) => {
+                state.status = "register successful";
+                state.isLoggedIn = true
+                console.log(action.payload)
+                state.auth = { ...state.auth = action.payload }
+            })
+            .addCase(registerNewUser.rejected, (state, action) => {
+                state.status = "register failure"
                 state.error = JSON.stringify(action.error.message);
             })
     }
