@@ -49,7 +49,7 @@ export const loginUser = createAsyncThunk('loginUser', async (data: { email: str
 )
 
 export const registerNewUser = createAsyncThunk('registerNewUser', async (data: {email: string, password: string, name: string})=>{
-    const response = await fetch('http://localhost:8080/v1/auth/login',{
+    const response = await fetch('http://localhost:8080/v1/auth/register',{
         method:'POST',
         mode: 'cors',
         headers: {
