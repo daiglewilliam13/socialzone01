@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import TopNav from '../../components/TopNav/TopNav';
 import SideNav from '../../components/SideNav/SideNav';
 import CreatePost from '../../components/CreatePost/CreatePost';
@@ -11,7 +11,13 @@ import { RootState } from '../../app/store';
 
 const Home = () => {
     const userInfo = useSelector((state:RootState)=> state.authStatus.userInfo);
+    const navigate = useNavigate();
     console.log(userInfo)
+    useEffect(()=>{
+        if (userInfo.user.name == "GUEST") {
+            navigate('/');
+        }    
+    })
     return (
         <>
         <TopNav />
