@@ -16,6 +16,7 @@ const Register = () => {
         }
         e.preventDefault()
         console.log(newUserData)
+        
     }
     return (
         <div id="login-wrapper">
