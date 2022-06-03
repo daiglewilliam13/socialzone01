@@ -12,12 +12,17 @@ const Login = () => {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("")
     const [buttonText, setButtonText] = useState("Log In")
+    const [error, setError] = useState(null)
     const handleLogin = async (e: any, email: string, password: string) => {
         e.preventDefault();
         setButtonText("Logging In")
         dispatch(loginUser({ email, password })).unwrap().then((res)=>{
-            console.log(res)
-            navigate('/home')
+            if (res.code == 401) {
+                setButtonText('Log In');
+                setError(res.message)
+            } else {
+                navigate('/home')
+            }
         })
 
     }
@@ -38,6 +43,7 @@ const Login = () => {
                         <button type='submit' id="login-button" onClick={(e) => handleLogin(e, email, password)}>{buttonText}</button>
                     </form>
                 </div>
+                <p>{error}</p>
                 <hr></hr>
                 <div id="other-auth-wrapper">
                     <p>Or log in with:</p>
