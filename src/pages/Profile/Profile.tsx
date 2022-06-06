@@ -7,11 +7,12 @@ import ShowProfile from '../../components/ShowProfile/ShowProfile';
 
 const Profile = () => {
     let params = useParams();
+    let id=params.id || "";
     return (
         <>
         <TopNav />
         <SideNav />
-        <ShowProfile />
+        <ShowProfile id={id}/>
         </>
     )
 }
