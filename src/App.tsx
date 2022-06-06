@@ -2,6 +2,7 @@ import React from 'react';
 import './App.css';
 import Landing from './pages/Landing/Landing';
 import Home from './pages/Home/Home';
+import Profile from './pages/Profile/Profile';
 import { Routes, Route, Navigate } from 'react-router-dom';
 import {useSelector} from 'react-redux';
 import {RootState } from './app/store';
@@ -17,6 +18,7 @@ function App() {
         <Route path="/home" element={
         isLoggedIn ? <Home /> : <Navigate to="/" />
         }/>
+        <Route path="/profile" element={<Profile />}/>
       </Routes>
       </>
     </div>

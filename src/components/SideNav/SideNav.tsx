@@ -35,11 +35,11 @@ const SideNav = () => {
         <div id="sidenav-wrapper" className={`sidenav-${sidenavStatus}`}>
             <div id="sidenav" >
                 <div id="side-link-wrapper">
-                    <button>Home</button>
-                    <button>Friends</button>
-                    <button>Messages</button>
-                    <button>Notifications</button>
-                    <button>Profile</button>
+                    <button onClick={()=>{navigate('/home')}}>Home</button>
+                    <button onClick={()=>{navigate('/friends')}}>Friends</button>
+                    <button onClick={()=>{navigate('/messages')}}>Messages</button>
+                    <button onClick={()=>{navigate('/notifications')}}>Notifications</button>
+                    <button onClick={()=>{navigate('/profile')}}>Profile</button>
                     <button onClick={handleLogout}>Logout</button>
                 </div>
             </div>
