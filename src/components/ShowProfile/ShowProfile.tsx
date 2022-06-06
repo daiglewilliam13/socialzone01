@@ -32,7 +32,7 @@ const ShowProfile: FC<ProfileProps> = (props): JSX.Element => {
     const [userInfo, setUser] = useState(initialState)
     const token = useSelector((state: RootState) => state.authStatus.auth.tokens.access.token)
     useEffect(() => {
-        getUser(props.id, token).then((res) => { console.log(res); setUser(res) })
+        getUser(props.id, token).then((res) => {setUser(res)})
     }, [props])
     return (
         <div className="profile-wrapper">
@@ -40,7 +40,7 @@ const ShowProfile: FC<ProfileProps> = (props): JSX.Element => {
             <p>{userInfo.role}</p>
             <p>{userInfo.name}</p>
             <p>{userInfo.email}</p>
-            <p>{userInfo.isEmailVerified}</p>
+            <p>{userInfo.isEmailVerified ? "true" : "false"}</p>
         </div>
     )
 }
