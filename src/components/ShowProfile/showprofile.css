@@ -1,3 +1,11 @@
 div.profile-wrapper {
     margin: 3rem 0 0 2rem;
 }
+div.profile-header {
+    display: flex;
+}
+img.profile-header-img {
+    height: 10rem;
+    width: 10rem;
+}
+

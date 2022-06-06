@@ -2,7 +2,8 @@ import React, { FC, useState, useEffect } from "react";
 import './showprofile.css';
 import { useSelector } from 'react-redux';
 import { RootState } from "../../app/store";
-
+import img from '../../images/john-doe.jpg';
+import './showprofile.css';
 
 interface ProfileProps {
     id: string
@@ -13,7 +14,9 @@ const initialState = {
     isEmailVerified: false,
     email: "",
     name: "",
-    timelinePosts: []
+    timelinePosts: [],
+    timelineComments: []
+
 }
 
 const getUser = async (id: string, token: string) => {
@@ -32,15 +35,18 @@ const ShowProfile: FC<ProfileProps> = (props): JSX.Element => {
     const [userInfo, setUser] = useState(initialState)
     const token = useSelector((state: RootState) => state.authStatus.auth.tokens.access.token)
     useEffect(() => {
-        getUser(props.id, token).then((res) => {setUser(res)})
+        getUser(props.id, token).then((res) => { setUser(res) })
     }, [props])
     return (
         <div className="profile-wrapper">
-            <p>SHOW PROFILE COMPONENT</p>
-            <p>{userInfo.role}</p>
-            <p>{userInfo.name}</p>
-            <p>{userInfo.email}</p>
-            <p>{userInfo.isEmailVerified ? "true" : "false"}</p>
+            <div className="profile-header">
+                <img className="profile-header-img" src={img}></img>
+                <p>{userInfo.name}</p>
+                <p>{userInfo.timelinePosts.length} posts</p>
+                <p>{userInfo.timelineComments.length} comments</p>
+            </div>
+            <div className="timeline-wrapper">
+            </div>
         </div>
     )
 }
