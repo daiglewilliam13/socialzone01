@@ -37,10 +37,10 @@ const SideNav = () => {
             <div id="sidenav" >
                 <div id="side-link-wrapper">
                     <button onClick={()=>{navigate('/home')}}>Home</button>
-                    <button onClick={()=>{navigate('/friends/user/'+id)}}>Friends</button>
+                    <button onClick={()=>{navigate('/friends')}}>Friends</button>
                     <button onClick={()=>{navigate('/messages')}}>Messages</button>
                     <button onClick={()=>{navigate('/notifications')}}>Notifications</button>
-                    <button onClick={()=>{navigate('/profile')}}>Profile</button>
+                    <button onClick={()=>{navigate('/profile/'+id)}}>Profile</button>
                     <button onClick={handleLogout}>Logout</button>
                 </div>
             </div>

@@ -10,6 +10,7 @@ const TopNav = () => {
     const navigate = useNavigate();
     const authStatus = useSelector((state: RootState) => state.authStatus);
     const username = authStatus.auth.user.name
+    const id = authStatus.auth.user.id;
     return (
         <div id="topnav">
             <div id="top-link-wrapper">
@@ -22,7 +23,7 @@ const TopNav = () => {
                     <span>{username}</span>
                     <FaBell onClick={()=>{navigate('/notifications')}} className="topnav-icon right-side" />
                     <FaEnvelope onClick={() => { navigate('/messages') }} className="topnav-icon right-side" />
-                    <img onClick={() => { navigate('/profile') }} id="topnav-profile-photo" className="right-side" src={img} />
+                    <img onClick={() => { navigate('/profile/'+id) }} id="topnav-profile-photo" className="right-side" src={img} />
                 </div>
             </div>
         </div>
