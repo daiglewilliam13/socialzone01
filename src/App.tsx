@@ -3,6 +3,7 @@ import './App.css';
 import Landing from './pages/Landing/Landing';
 import Home from './pages/Home/Home';
 import Profile from './pages/Profile/Profile';
+import Friends from './pages/Friends/Friends';
 import { Routes, Route, Navigate } from 'react-router-dom';
 import {useSelector} from 'react-redux';
 import {RootState } from './app/store';
@@ -18,7 +19,8 @@ function App() {
         <Route path="/home" element={
         isLoggedIn ? <Home /> : <Navigate to="/" />
         }/>
-        <Route path="/profile" element={<Profile />}/>
+          <Route path="/profile" element={<Profile />} />
+          <Route path="/friends" element={<Friends />} />
       </Routes>
       </>
     </div>
