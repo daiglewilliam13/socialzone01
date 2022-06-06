@@ -10,6 +10,7 @@ import { useNavigate } from 'react-router-dom';
 const SideNav = () => {
     const navigate = useNavigate();
     const authStatus = useSelector((state: RootState) => state.authStatus);
+    const id = useSelector((state: RootState) => state.authStatus.auth.user.id)
     const refreshToken = authStatus.auth.tokens.refresh.token;
     const [expanded, setExpanded] = useState(false);
     const sidenavStatus = expanded ? 'expanded' : 'collapsed';
@@ -36,7 +37,7 @@ const SideNav = () => {
             <div id="sidenav" >
                 <div id="side-link-wrapper">
                     <button onClick={()=>{navigate('/home')}}>Home</button>
-                    <button onClick={()=>{navigate('/friends')}}>Friends</button>
+                    <button onClick={()=>{navigate('/friends/user/'+id)}}>Friends</button>
                     <button onClick={()=>{navigate('/messages')}}>Messages</button>
                     <button onClick={()=>{navigate('/notifications')}}>Notifications</button>
                     <button onClick={()=>{navigate('/profile')}}>Profile</button>

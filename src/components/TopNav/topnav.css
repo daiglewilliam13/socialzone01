@@ -10,7 +10,6 @@
     }
 
     .topnav-icon:hover {
-        transition: .2s;
         cursor:pointer;
         color: #9f86ff;
         
@@ -26,6 +25,7 @@
 
     .topnav-icon {
         padding: 0 .5rem;
+        transition: .2s;
         font-size: 2rem;
         color: white;
         filter: drop-shadow(2px 2px 2px rgba(0, 0, 0, 0.25));
@@ -40,7 +40,14 @@
         width: 3rem;
         border-radius: 50%;
         margin: 0 .5rem;
+        transition: .2s;
+        
     }
+        img#topnav-profile-photo:hover {
+            cursor: pointer;
+            filter: drop-shadow(2px 2px 2px rgba(0, 0, 0, 0.25));
+        }
+
 
     div.left-group {
         display: flex;
