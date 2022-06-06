@@ -12,15 +12,15 @@ const getUser = async (id:string, token: string) =>{
         method: 'GET',
         mode: 'cors',
         headers: {
-            'Content-Type': 'application/json',
-            'token': 'bearer'+token
+            'accept': 'application/json',
+            'Authorization': 'Bearer ' + token
         },
     });
     return response.json();
 }
 const ShowProfile: FC<ProfileProps> = (props): JSX.Element => {
-    const token = useSelector((state: RootState) => state.authStatus.auth.tokens.refresh)
-    const user = getUser(props.id, token.token);
+    const token = useSelector((state: RootState) => state.authStatus.auth.tokens.access.token)
+    const user = getUser(props.id, token);
     console.log(user);
     return(
         <div className="profile-wrapper">
