@@ -1,43 +1,53 @@
 @media screen and (min-width:585px) {
 
     div#topnav {
-        background-color:#C3B6F6;
+        background-color: #C3B6F6;
         height: 3rem;
         position: absolute;
-        top:0;
+        top: 0;
         width: 100%;
-        z-index:1;
+        z-index: 1;
     }
-    div#top-link-wrapper{
+
+    .topnav-icon:hover {
+        background-color: #9f86ff;
+        transition: .2s;
+    }
+
+    div#top-link-wrapper {
         display: flex;
         align-items: center;
         justify-content: center;
         max-width: 1000px;
         margin: 0 auto;
     }
-    
-    .topnav-icon{
+
+    .topnav-icon {
         padding: 0 .5rem;
         font-size: 2rem;
         color: white;
-        text-shadow: 2px 2px 2px rgba(0,0,0,0.25);
+        text-shadow: 2px 2px 2px rgba(0, 0, 0, 0.25);
     }
-    input#search-bar{
+
+    input#search-bar {
         width: 20rem;
     }
+
     img#topnav-profile-photo {
         height: 3rem;
         width: 3rem;
         border-radius: 50%;
         margin: 0 .5rem;
     }
-    div.left-group{
-        display:flex;
-        align-items:center;
+
+    div.left-group {
+        display: flex;
+        align-items: center;
     }
-    div.right-group{
-        display:flex;
-        align-items:center;
-        margin-left:auto;
+
+    div.right-group {
+        display: flex;
+        align-items: center;
+        margin-left: auto;
     }
 }
