@@ -22,7 +22,7 @@ function App() {
           <Route path="/home" element={
             isLoggedIn ? <Home /> : <Navigate to="/" />
           } />
-          <Route path={'/profile/'+id} element={isLoggedIn ? <Profile /> : <Navigate to="/" />
+          <Route path={'/profile/:id'} element={isLoggedIn ? <Profile /> : <Navigate to="/" />
           } />
           <Route path="/friends" element={isLoggedIn ? <Friends /> : <Navigate to="/" />
           } />
