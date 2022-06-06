@@ -44,8 +44,13 @@ const ShowProfile: FC<ProfileProps> = (props): JSX.Element => {
                 <p>{userInfo.name}</p>
                 <p>{userInfo.timelinePosts.length} posts</p>
                 <p>{userInfo.timelineComments.length} comments</p>
+                <p>{userInfo.isEmailVerified ? "Verified" : "Not Verified"} </p>
+                <button>Add to Friends</button>
+                <button>Message</button>
+                <button>Block</button>
             </div>
             <div className="timeline-wrapper">
+                <h3>Posts by {userInfo.name}</h3><hr></hr>
             </div>
         </div>
     )
