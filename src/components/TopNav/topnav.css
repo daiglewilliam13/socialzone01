@@ -10,8 +10,9 @@
     }
 
     .topnav-icon:hover {
-        background-color: #9f86ff;
         transition: .2s;
+        cursor:pointer;
+        
     }
 
     div#top-link-wrapper {
@@ -26,7 +27,7 @@
         padding: 0 .5rem;
         font-size: 2rem;
         color: white;
-        text-shadow: 2px 2px 2px rgba(0, 0, 0, 0.25);
+        filter: drop-shadow(2px 2px 2px rgba(0, 0, 0, 0.25));
     }
 
     input#search-bar {

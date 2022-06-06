@@ -21,10 +21,14 @@ function App() {
         <Route path="/home" element={
         isLoggedIn ? <Home /> : <Navigate to="/" />
         }/>
-          <Route path="/profile" element={<Profile />} />
-          <Route path="/friends" element={<Friends />} />
-          <Route path="/messages" element={<Messages />} />
-          <Route path="/notifications" element={<Notifications />} />
+          <Route path="/profile" element={isLoggedIn ? <Profile /> : <Navigate to="/" />
+          } />
+          <Route path="/friends" element={isLoggedIn ? <Friends /> : <Navigate to="/" />
+          } />
+          <Route path="/messages" element={isLoggedIn ? <Messages /> : <Navigate to="/" />
+          } />
+          <Route path="/notifications" element={isLoggedIn ? <Notifications /> : <Navigate to="/" />
+          } />
       </Routes>
       </>
     </div>
