@@ -12,6 +12,7 @@
     .topnav-icon:hover {
         transition: .2s;
         cursor:pointer;
+        color: #9f86ff;
         
     }
 
