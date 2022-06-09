@@ -50,10 +50,17 @@ const getPosts = async (id: string) => {
     })
     return (await response.json());
 }
+
+
 const ShowProfile: FC<ProfileProps> = (props): JSX.Element => {
     const [userInfo, setUserInfo] = useState(initialState)
     const [posts, setPosts] = useState(initialPostState)
     const token = useSelector((state: RootState) => state.authStatus.auth.tokens.access.token)
+    const postArray = posts.map((currentPost)=>{
+        return(
+            <Post post={currentPost}/>
+        )
+    })
     useEffect(() => {
         getPosts(props.id).then((res) => setPosts(res))
         getUser(props.id, token).then((res) => { setUserInfo(res) })
@@ -64,7 +71,7 @@ const ShowProfile: FC<ProfileProps> = (props): JSX.Element => {
                 <div className="profile-header">
                     <img className="profile-header-img" src={img}></img>
                     <p>{userInfo.name}</p>
-                    <p>{userInfo.timelinePosts.length} posts</p>
+                    <p>{postArray.length} posts</p>
                     <p>{userInfo.timelineComments.length} comments</p>
                     <p>{userInfo.isEmailVerified ? "Verified" : "Not Verified"} </p>
                     <button>Add to Friends</button>
@@ -75,7 +82,7 @@ const ShowProfile: FC<ProfileProps> = (props): JSX.Element => {
                     <h3>Posts by {userInfo.name}</h3><hr></hr>
                 </div>
                 <div>
-                    {posts? <Post post={posts[0]}/>:""}
+                    {postArray}
                 </div>
             </div>
         </>
