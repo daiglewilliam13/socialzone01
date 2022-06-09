@@ -20,7 +20,6 @@ const initialState = {
 }
 
 const getUser = async (id: string, token: string) => {
-    console.log(token)
     const response = await fetch('http://localhost:8080/v1/users/' + id, {
         method: 'GET',
         mode: 'cors',
@@ -31,10 +30,19 @@ const getUser = async (id: string, token: string) => {
     });
     return (await response.json());
 }
+
+const getPosts = async (id: string) =>{
+    const response = await fetch('http://localhost:8080/v1/posts/author/'+ id,{
+        method: 'GET',
+        mode: 'cors',
+    })
+    return (await response.json());
+}
 const ShowProfile: FC<ProfileProps> = (props): JSX.Element => {
     const [userInfo, setUser] = useState(initialState)
     const token = useSelector((state: RootState) => state.authStatus.auth.tokens.access.token)
     useEffect(() => {
+        getPosts(props.id).then((res)=>console.log(res))
         getUser(props.id, token).then((res) => { setUser(res) })
     }, [props])
     return (
