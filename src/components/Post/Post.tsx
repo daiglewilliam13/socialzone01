@@ -12,12 +12,12 @@ interface PostProps {
         authorId: string,
         authorName: string,
         body: string,
-        comments: [string],
-        created: { type: Date },
-        likes: { type: Number },
-        dislikes: { type: Number },
-        likedBy: [string],
-        dislikedBy: [string],
+        comments: string[],
+        created: string,
+        likes: number,
+        dislikes: number,
+        likedBy: string[],
+        dislikedBy: string[],
     }
 }
 const Post: FC<PostProps> = (props): JSX.Element => {
@@ -29,6 +29,7 @@ const Post: FC<PostProps> = (props): JSX.Element => {
     }
     let commentsClassStr = expandComments ? "expanded" : "collapsed";
     return (
+        <>
         <div className="post-wrapper">
             <div className="profile-image">
                 <img alt-text="jane doe" src={profilePicture} />
@@ -56,11 +57,12 @@ const Post: FC<PostProps> = (props): JSX.Element => {
                 {/* {postObject.comments.map((comment) => {
                     return (
                         <PostComment comment={comment} />
-                    )
-                })
+                        )
+                    })
                 } */}
             </div>
         </div>
+    </>
     )
 }
 

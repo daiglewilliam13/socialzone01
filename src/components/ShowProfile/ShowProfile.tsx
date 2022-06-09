@@ -19,7 +19,17 @@ const initialState = {
     timelineComments: []
 
 }
-const initialPostState = [{}] || null;
+const initialPostState = [{
+    _id: "",
+    authorId: "string,",
+    authorName: "string,",
+    body: "string,",
+    comments: ["string"],
+    created: "date",
+    likes: 2,
+    dislikes: 0,
+    likedBy: ["string"],
+    dislikedBy: ["string"], }] || null;
 
 const getUser = async (id: string, token: string) => {
     const response = await fetch('http://localhost:8080/v1/users/' + id, {

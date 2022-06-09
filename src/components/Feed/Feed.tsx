@@ -11,18 +11,6 @@ const Feed = () => {
                     <h1>Live Feed</h1><div id="border-line"></div>
                 </div>
                 <div className="feed-posts">
-                    <Post />
-                    <Post />
-                    <Post />
-                    <Post />
-                    <Post />
-                    <Post />
-                    <Post />
-                    <Post />
-                    <Post />
-                    <Post />
-                    <Post />
-                    <Post />
                 </div>
             </div>
         </>
