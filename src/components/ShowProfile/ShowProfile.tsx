@@ -19,7 +19,7 @@ const initialState = {
     timelineComments: []
 
 }
-const initialPostState = [{}]
+const initialPostState = [{}] || null;
 
 const getUser = async (id: string, token: string) => {
     const response = await fetch('http://localhost:8080/v1/users/' + id, {
@@ -64,7 +64,8 @@ const ShowProfile: FC<ProfileProps> = (props): JSX.Element => {
                 <div className="timeline-wrapper">
                     <h3>Posts by {userInfo.name}</h3><hr></hr>
                 </div>
-                <div>{}
+                <div>
+                    {posts? <Post post={posts[0]}/>:""}
                 </div>
             </div>
         </>
