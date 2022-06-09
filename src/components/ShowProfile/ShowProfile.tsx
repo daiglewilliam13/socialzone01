@@ -47,7 +47,7 @@ const getPosts = async (id: string) => {
 }
 const ShowProfile: FC<ProfileProps> = (props): JSX.Element => {
     const [userInfo, setUserInfo] = useState(initialState)
-    const [posts, setPosts] = useState([{body:''}])
+    const [posts, setPosts] = useState(initialPostState)
     const token = useSelector((state: RootState) => state.authStatus.auth.tokens.access.token)
     useEffect(() => {
         getPosts(props.id).then((res) => setPosts(res))
