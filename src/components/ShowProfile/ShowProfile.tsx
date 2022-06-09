@@ -23,7 +23,7 @@ const initialPostState = [{
     comments: '',
     authorId: '',
     authorName: '',
-    createdAt: '',
+    created: '',
 }]
 
 const getUser = async (id: string, token: string) => {
