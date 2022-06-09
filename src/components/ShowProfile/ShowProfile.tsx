@@ -4,6 +4,7 @@ import { useSelector } from 'react-redux';
 import { RootState } from "../../app/store";
 import img from '../../images/john-doe.jpg';
 import './showprofile.css';
+import Post from '../Post/Post';
 
 interface ProfileProps {
     id: string
