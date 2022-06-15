@@ -1,4 +1,4 @@
-import React, {FC} from 'react';
+import React, { FC } from 'react';
 import './createpost.css';
 
 interface CreateProps {
@@ -9,8 +9,8 @@ interface CreateProps {
 }
 
 const CreatePost: FC<CreateProps> = (props): JSX.Element => {
-    
-    return(
+
+    return (
         <div id="create-post-wrapper">
             <p>What's on your mind, {props.user.name}?</p>
             <div className="create-post-input-wrapper">

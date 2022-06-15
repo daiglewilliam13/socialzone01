@@ -10,7 +10,7 @@ import { RootState } from '../../app/store';
 
 
 const Home = () => {
-       const userInfo = useSelector((state:RootState)=>state.authStatus.auth.user)
+       const userInfo = useSelector((state: RootState) => state.authStatus.auth.user)
        const user = {
               name: userInfo.name,
               id: userInfo.id
