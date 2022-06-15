@@ -2,7 +2,7 @@ import React, {FC} from "react";
 import './Reply.css';
 
 interface ReplyProps {
-    id: number,
+    id: string,
 }
 
 const Reply: FC<ReplyProps> = (props): JSX.Element =>{
