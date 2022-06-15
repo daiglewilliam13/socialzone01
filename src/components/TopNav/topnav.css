@@ -12,7 +12,7 @@
     .topnav-icon:hover {
         cursor:pointer;
         color: #9f86ff;
-        
+        transition: 0ms;
     }
 
     div#top-link-wrapper {
