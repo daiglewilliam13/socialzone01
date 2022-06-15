@@ -1,7 +1,11 @@
-import React from "react";
+import React, {FC} from "react";
 import './Reply.css';
 
-const Reply = () =>{
+interface ReplyProps {
+    id: number,
+}
+
+const Reply: FC<ReplyProps> = (props): JSX.Element =>{
 
     return(
         <div className="reply-input-wrapper">
