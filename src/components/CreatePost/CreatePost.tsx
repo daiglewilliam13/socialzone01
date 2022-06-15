@@ -12,7 +12,21 @@ interface CreateProps {
 const CreatePost: FC<CreateProps> = (props): JSX.Element => {
     const [postText, setPostText] = useState('');
     const publishPost = async () =>{
-        console.log(postText)
+        const url = "http://localhost:8080/v1/posts";
+        const postObject = {
+            body: postText,
+            authorId: props.user.id,
+            authorName: props.user.name
+        }
+        const response = await fetch(url, {
+            method: 'POST',
+            mode: 'cors',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(postObject)
+        });
+        console.log(response)
     }
     return (
         <div id="create-post-wrapper">
