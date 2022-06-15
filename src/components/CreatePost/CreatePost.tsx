@@ -1,7 +1,11 @@
-import React from 'react';
+import React, {FC} from 'react';
 import './createpost.css';
 
-const CreatePost = () => {
+interface CreateProps {
+    id: string
+}
+
+const CreatePost: FC<CreateProps> = (props): JSX.Element => {
     
     return(
         <div id="create-post-wrapper">
