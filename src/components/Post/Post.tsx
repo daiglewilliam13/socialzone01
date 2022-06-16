@@ -54,12 +54,12 @@ const Post: FC<PostProps> = (props): JSX.Element => {
                 </div>
             </div>
             <div className={`comments-wrapper ${commentsClassStr}`}>
-                {/* {postObject.comments.map((comment) => {
+                {postObject.comments.map((commentId) => {
                     return (
-                        <PostComment comment={comment} />
+                        <PostComment commentId={commentId} />
                         )
                     })
-                } */}
+                }
             </div>
         </div>
     </>

@@ -1,19 +1,13 @@
 import React from "react";
 import './postcomment.css';
 interface CommentProps {
-    comment:{
-        authorId: number,
-        date: string,
-        text: string
-    } 
-
+    commentId: string,
 }
 const PostComment: React.FC<CommentProps> = props => {
 
     return(
         <div className="comment-reply-wrapper">
-        <p className="comment-heading">By {props.comment.authorId} on {props.comment.date}</p>
-        <p className="comment-body">{props.comment.text}</p>
+            <p>{props.commentId}</p>
         </div>
     )
 }

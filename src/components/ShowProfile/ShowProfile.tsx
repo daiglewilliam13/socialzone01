@@ -63,7 +63,7 @@ const ShowProfile: FC<ProfileProps> = (props): JSX.Element => {
     })
     useEffect(() => {
         getPosts(props.id).then((res) => setPosts(res))
-        getUser(props.id, token).then((res) => { setUserInfo(res) })
+        getUser(props.id, token).then((res) => { setUserInfo(res)})
     }, [props])
     return (
         <>
