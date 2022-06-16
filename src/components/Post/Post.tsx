@@ -21,7 +21,6 @@ interface PostProps {
     }
 }
 const Post: FC<PostProps> = (props): JSX.Element => {
-
     const postObject = props.post
     const [expandComments, setExpandComments] = useState(false);
     const showComments = () => {

@@ -1,4 +1,4 @@
-import React, {FC, useState} from "react";
+import React, {FC, useState, useEffect} from "react";
 import './Reply.css';
 import {useSelector} from 'react-redux';
 import { RootState } from '../../app/store';
@@ -6,16 +6,22 @@ import { RootState } from '../../app/store';
 interface ReplyProps {
     parentId: string
 }
-//get id of post
-//post comment text to route with id
-//route will run callback that saves new comments
-//inject returned comment id into the comments array of the parent post
-//re-render comments section 
 const Reply: FC<ReplyProps> = (props): JSX.Element =>{
     const [replyText, setReplyText] = useState('')
+    const [comments, setComments] = useState<any>([])
     const userInfo = useSelector((state: RootState)=>state.authStatus.auth.user)
+    const url = 'http://localhost:8080/v1/comments/';
+    const getComments = async () => {
+        const result = await fetch(url+props.parentId, {
+            method: 'GET',
+            mode: 'cors',
+            headers: {
+                'Content-Type': 'application/json'
+            }
+        }).then((res)=>{return res.json()})
+        setComments(result.data)
+    }
     const submitComment = async () => {
-        const url = 'http://localhost:8080/v1/comments';
         const commentData = {
             authorName: userInfo.name,
             authorId: userInfo.id,
@@ -30,13 +36,20 @@ const Reply: FC<ReplyProps> = (props): JSX.Element =>{
             },
             body: JSON.stringify(commentData)
         });
-        console.log(response);
         setReplyText('')
+        getComments();
+        console.log(comments)
     }
+    const commentArray = comments.map((text:string)=>{
+        return (
+            <p>{text}</p>
+        )
+    })
     return(
         <div className="reply-input-wrapper">
         <textarea value={replyText} placeholder="Type your reply here..." className="post-reply" onChange={(e)=> setReplyText(e.target.value)}></textarea>
         <button className="post-reply-submit" onClick={submitComment}>Reply</button>
+        <p>{commentArray}</p>
         </div>
     )
 }
