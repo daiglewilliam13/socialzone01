@@ -1,7 +1,7 @@
 import React, { FC } from "react";
 import { useState } from 'react';
 import profilePicture from '../../images/jane-doe.jpg';
-import { BiDownArrow, BiUpArrow } from 'react-icons/bi';
+
 import './post.css';
 import PostComment from '../PostComment/PostComment';
 import Reply from '../Reply/Reply';
@@ -22,11 +22,7 @@ interface PostProps {
 }
 const Post: FC<PostProps> = (props): JSX.Element => {
     const postObject = props.post
-    const [expandComments, setExpandComments] = useState(false);
-    const showComments = () => {
-        setExpandComments(expandComments => !expandComments)
-    }
-    let commentsClassStr = expandComments ? "expanded" : "collapsed";
+
     return (
         <>
         <div className="post-wrapper">
@@ -45,21 +41,7 @@ const Post: FC<PostProps> = (props): JSX.Element => {
                 <div className="reply-wrapper">
                     <Reply parentId={props.post.id}/>
                 </div>
-                <div className="engagement-wrapper">
-                    <div className="vote-wrapper">
-                        <BiUpArrow className="vote-icon" />{postObject.likes} : <BiDownArrow className="vote-icon" />{postObject.dislikes}
-                    </div>
-                    <div className="comments-numbers">{postObject.comments.length} Comments<button onClick={showComments} className="show-comments">{expandComments ? "hide" : "show"}</button></div>
-                </div>
-            </div>
-            <div className={`comments-wrapper ${commentsClassStr}`}>
-                {postObject.comments.map((commentId) => {
-                    return (
-                        <PostComment commentId={commentId} />
-                        )
-                    })
-                }
-            </div>
+        </div>
         </div>
     </>
     )
