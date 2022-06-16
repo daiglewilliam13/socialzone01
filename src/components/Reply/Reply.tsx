@@ -10,11 +10,14 @@ interface ReplyProps {
 //inject returned comment id into the comments array of the parent post
 //re-render comments section 
 const Reply: FC<ReplyProps> = (props): JSX.Element =>{
-
+    const parentId = props.id;
+    const submitComment = () => {
+        console.log(parentId)
+    }
     return(
         <div className="reply-input-wrapper">
         <textarea placeholder="Type your reply here..."className="post-reply"></textarea>
-        <button className="post-reply-submit">Reply</button>
+        <button className="post-reply-submit" onClick={submitComment}>Reply</button>
         </div>
     )
 }

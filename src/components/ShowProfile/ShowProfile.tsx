@@ -20,7 +20,7 @@ const initialState = {
 
 }
 const initialPostState = [{
-    _id: "",
+    id: "",
     authorId: "string,",
     authorName: "string,",
     body: "string,",

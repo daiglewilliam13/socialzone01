@@ -8,7 +8,7 @@ import Reply from '../Reply/Reply';
 
 interface PostProps {
     post: {
-        _id: string,
+        id: string,
         authorId: string,
         authorName: string,
         body: string,
@@ -44,7 +44,7 @@ const Post: FC<PostProps> = (props): JSX.Element => {
                     <p>{postObject.body}</p>
                 </div>
                 <div className="reply-wrapper">
-                    <Reply id={props.post._id}/>
+                    <Reply id={props.post.id}/>
                 </div>
                 <div className="engagement-wrapper">
                     <div className="vote-wrapper">
