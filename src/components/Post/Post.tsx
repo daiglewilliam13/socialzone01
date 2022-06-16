@@ -44,7 +44,7 @@ const Post: FC<PostProps> = (props): JSX.Element => {
                     <p>{postObject.body}</p>
                 </div>
                 <div className="reply-wrapper">
-                    <Reply id={props.post.id}/>
+                    <Reply parentId={props.post.id}/>
                 </div>
                 <div className="engagement-wrapper">
                     <div className="vote-wrapper">
