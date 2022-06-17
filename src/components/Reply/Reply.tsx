@@ -3,6 +3,7 @@ import './Reply.css';
 import { useSelector } from 'react-redux';
 import { RootState } from '../../app/store';
 import { BiDownArrow, BiUpArrow } from 'react-icons/bi';
+import PostComment from '../PostComment/PostComment';
 interface ReplyProps {
     parentId: string
 }
@@ -17,9 +18,9 @@ const Reply: FC<ReplyProps> = (props): JSX.Element => {
     const [dislikes, setDislikes] = useState<Number>(0)
     const [comments, setComments] = useState<any>([])
     const userInfo = useSelector((state: RootState) => state.authStatus.auth.user)
-    const url = 'http://localhost:8080/v1/posts/';
+    const url = 'http://localhost:8080/v1/';
     const getComments = async () => {
-        const result = await fetch(url + props.parentId, {
+        const result = await fetch(url + "posts/" + props.parentId, {
             method: 'GET',
             mode: 'cors',
             headers: {
@@ -35,7 +36,7 @@ const Reply: FC<ReplyProps> = (props): JSX.Element => {
             text: replyText,
             replyTo: props.parentId
         }
-        const response = await fetch(url, {
+        const response = await fetch(url+'comments/', {
             method: 'POST',
             mode: 'cors',
             headers: {
@@ -47,9 +48,9 @@ const Reply: FC<ReplyProps> = (props): JSX.Element => {
         getComments();
         console.log(comments)
     }
-    const commentArray = comments.map((text: string) => {
+    const commentArray = comments.map((id: string) => {
         return (
-            <p>{text}</p>
+            <PostComment commentId={id} />
         )
     })
     return (

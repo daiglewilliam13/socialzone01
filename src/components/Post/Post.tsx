@@ -1,9 +1,7 @@
 import React, { FC } from "react";
 import { useState } from 'react';
 import profilePicture from '../../images/jane-doe.jpg';
-
 import './post.css';
-import PostComment from '../PostComment/PostComment';
 import Reply from '../Reply/Reply';
 
 interface PostProps {
