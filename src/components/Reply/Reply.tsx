@@ -35,6 +35,11 @@ const Reply: FC<ReplyProps> = (props): JSX.Element => {
             console.log(err)
         }
     }
+    const refreshComments = () =>{
+        getComments().then((res) => {
+            setComments(res.data.comments);
+        })
+    } 
     const submitComment = async () => {
         setIsLoading(true)
         const commentData = {
@@ -53,9 +58,7 @@ const Reply: FC<ReplyProps> = (props): JSX.Element => {
         }).then((res) => {
             return res.json()
         });
-        getComments().then((res) => {
-            setComments(res.data.comments);
-        })
+        refreshComments();
         setReplyText('')
 
     }
@@ -65,9 +68,7 @@ const Reply: FC<ReplyProps> = (props): JSX.Element => {
         )
     })
     useEffect(()=> {
-        getComments().then((res)=>{
-            setComments(res.data.comments);
-        })
+        refreshComments();
     }, [])
     return (
         <>
