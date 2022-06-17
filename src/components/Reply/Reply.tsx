@@ -8,51 +8,67 @@ interface ReplyProps {
     parentId: string
 }
 const Reply: FC<ReplyProps> = (props): JSX.Element => {
-    const [expandComments, setExpandComments] = useState(false);
-    const showComments = () => {
-        setExpandComments(expandComments => !expandComments)
-    }
-    let commentsClassStr = expandComments ? "expanded" : "collapsed";
+    const [expandComments, setExpandComments] = useState<boolean>(false);
+    const [isLoading, setIsLoading] = useState<boolean>(true)
     const [replyText, setReplyText] = useState<any>('')
     const [likes, setLikes] = useState<Number>(0)
     const [dislikes, setDislikes] = useState<Number>(0)
     const [comments, setComments] = useState<any>([])
+    const showComments = () => {
+        setExpandComments(expandComments => !expandComments)
+    }
+    let commentsClassStr = expandComments ? "expanded" : "collapsed";
     const userInfo = useSelector((state: RootState) => state.authStatus.auth.user)
-    const url = 'http://localhost:8080/v1/';
+    const url = 'http://localhost:8080/v1';
     const getComments = async () => {
-        const result = await fetch(url + "posts/" + props.parentId, {
-            method: 'GET',
-            mode: 'cors',
-            headers: {
-                'Content-Type': 'application/json'
-            }
-        }).then((res) => { return res.json() })
-        setComments(result.data.comments)
+        try {
+            const result = await fetch(url + "/posts/" + props.parentId, {
+                method: 'GET',
+                mode: 'cors',
+                headers: {
+                    'Content-Type': 'application/json'
+                }
+            })
+            const data = await result.json();
+            return data;
+        } catch (err) {
+            console.log(err)
+        }
     }
     const submitComment = async () => {
+        setIsLoading(true)
         const commentData = {
             authorName: userInfo.name,
             authorId: userInfo.id,
             text: replyText,
             replyTo: props.parentId
         }
-        const response = await fetch(url+'comments/', {
+        const response = await fetch(url + '/comments', {
             method: 'POST',
             mode: 'cors',
             headers: {
                 'Content-Type': 'application/json',
             },
             body: JSON.stringify(commentData)
+        }).then((res) => {
+            return res.json()
         });
+        getComments().then((res) => {
+            setComments(res.data.comments);
+        })
         setReplyText('')
-        getComments();
-        console.log(comments)
+
     }
     const commentArray = comments.map((id: string) => {
         return (
             <PostComment commentId={id} />
         )
     })
+    useEffect(()=> {
+        getComments().then((res)=>{
+            setComments(res.data.comments);
+        })
+    }, [])
     return (
         <>
             <div className="reply-input-wrapper">

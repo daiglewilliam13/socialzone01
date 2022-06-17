@@ -53,6 +53,7 @@ const getPosts = async (id: string) => {
 
 
 const ShowProfile: FC<ProfileProps> = (props): JSX.Element => {
+    const [isLoading, setIsLoading] = useState(true)
     const [userInfo, setUserInfo] = useState(initialState)
     const [posts, setPosts] = useState(initialPostState)
     const token = useSelector((state: RootState) => state.authStatus.auth.tokens.access.token)
@@ -62,9 +63,12 @@ const ShowProfile: FC<ProfileProps> = (props): JSX.Element => {
         )
     })
     useEffect(() => {
-        getPosts(props.id).then((res) => setPosts(res))
+        getPosts(props.id).then((res) => {
+            setPosts(res);
+            setIsLoading(false)
+        })
         getUser(props.id, token).then((res) => { setUserInfo(res)})
-    }, [props])
+    }, [])
     return (
         <>
             <div className="profile-wrapper">
@@ -81,8 +85,8 @@ const ShowProfile: FC<ProfileProps> = (props): JSX.Element => {
                 <div className="timeline-wrapper">
                     <h3>Posts by {userInfo.name}</h3><hr></hr>
                 </div>
-                <div>
-                    {postArray}
+                <div> 
+                    {isLoading ? "Fetching Posts..." : postArray}
                 </div>
             </div>
         </>

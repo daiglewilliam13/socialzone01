@@ -7,14 +7,16 @@ interface CommentProps {
 const PostComment: React.FC<CommentProps> = props => {
     const [text, setText] = useState<any>('')
     const url = "http://localhost:8080/v1/comments/";
-    const postText = async () => {
-        const result = fetch(url+props.commentId, {
+    const getPostText = async () => {
+        const result = await fetch(url+props.commentId, {
             method: 'GET',
             mode: 'cors'
-        }).then((res)=>{return res.json()})
-        console.log(result)
+        }).then((res)=>{ 
+            return res.json()
+        })
+        setText(result.data.text)
     }
-    useEffect(()=>{postText()}, [])
+    useEffect(()=>{getPostText()}, [])
     return(
         <div className="comment-reply-wrapper">
             <p>{text}</p>

@@ -1,5 +1,4 @@
 import React, { FC } from "react";
-import { useState } from 'react';
 import profilePicture from '../../images/jane-doe.jpg';
 import './post.css';
 import Reply from '../Reply/Reply';
