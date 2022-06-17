@@ -19,6 +19,7 @@ const Reply: FC<ReplyProps> = (props): JSX.Element => {
     }
     let commentsClassStr = expandComments ? "expanded" : "collapsed";
     const userInfo = useSelector((state: RootState) => state.authStatus.auth.user)
+    console.log(userInfo)
     const url = 'http://localhost:8080/v1';
     const getComments = async () => {
         try {
@@ -43,11 +44,12 @@ const Reply: FC<ReplyProps> = (props): JSX.Element => {
     const submitComment = async () => {
         setIsLoading(true)
         const commentData = {
-            authorName: userInfo.name,
-            authorId: userInfo.id,
+            username: userInfo.name,
+            userId: userInfo.id,
             text: replyText,
             replyTo: props.parentId
         }
+        console.log(commentData)
         const response = await fetch(url + '/comments', {
             method: 'POST',
             mode: 'cors',

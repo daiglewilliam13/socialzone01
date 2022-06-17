@@ -26,13 +26,14 @@ const CreatePost: FC<CreateProps> = (props): JSX.Element => {
             },
             body: JSON.stringify(postObject)
         });
+        setPostText('')
         console.log(response)
     }
     return (
         <div id="create-post-wrapper">
             <p>What's on your mind, {props.user.name}?</p>
             <div className="create-post-input-wrapper">
-                <textarea name="" id="" placeholder='Tell us something about your day...' onChange={(e)=>{setPostText(e.target.value)}}></textarea>
+                <textarea value={postText} name="" id="" placeholder='Tell us something about your day...' onChange={(e)=>{setPostText(e.target.value)}}></textarea>
                 <button id="create-post-submit" onClick={publishPost}>Post Update</button>
             </div>
         </div>

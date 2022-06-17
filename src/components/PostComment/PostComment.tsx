@@ -14,6 +14,7 @@ const PostComment: React.FC<CommentProps> = props => {
         }).then((res)=>{ 
             return res.json()
         })
+        console.log(result)
         setText(result.data.text)
     }
     useEffect(()=>{getPostText()}, [])
