@@ -49,7 +49,6 @@ const Reply: FC<ReplyProps> = (props): JSX.Element => {
             text: replyText,
             replyTo: props.parentId
         }
-        console.log(commentData)
         const response = await fetch(url + '/comments', {
             method: 'POST',
             mode: 'cors',
