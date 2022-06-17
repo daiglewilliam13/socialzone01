@@ -11,8 +11,8 @@ const Reply: FC<ReplyProps> = (props): JSX.Element => {
     const [expandComments, setExpandComments] = useState<boolean>(false);
     const [isLoading, setIsLoading] = useState<boolean>(true)
     const [replyText, setReplyText] = useState<any>('')
-    const [likes, setLikes] = useState<Number>(0)
-    const [dislikes, setDislikes] = useState<Number>(0)
+    const [likes, setLikes] = useState(0)
+    const [dislikes, setDislikes] = useState(0)
     const [comments, setComments] = useState<any>([])
     const showComments = () => {
         setExpandComments(expandComments => !expandComments)
@@ -39,8 +39,10 @@ const Reply: FC<ReplyProps> = (props): JSX.Element => {
     const refreshComments = () =>{
         getComments().then((res) => {
             setComments(res.data.comments);
+            setLikes(res.data.likes)
+            setDislikes(res.data.dislikes)
         })
-    } 
+    }
     const submitComment = async () => {
         setIsLoading(true)
         const commentData = {
@@ -63,6 +65,7 @@ const Reply: FC<ReplyProps> = (props): JSX.Element => {
         setReplyText('')
 
     }
+
     const commentArray = comments.map((id: string) => {
         return (
             <PostComment commentId={id} />
@@ -78,7 +81,7 @@ const Reply: FC<ReplyProps> = (props): JSX.Element => {
                 <button className="post-reply-submit" onClick={submitComment}>Reply</button>
                 <div className="engagement-wrapper">
                     <div className="vote-wrapper">
-                        <BiUpArrow className="vote-icon" />: <BiDownArrow className="vote-icon" />
+                        <BiUpArrow className="vote-icon" />{likes} <BiDownArrow className="vote-icon" />{dislikes}
                     </div>
                     <div className="comments-numbers">{comments.length} Comments<button onClick={showComments} className="show-comments">{expandComments ? "hide" : "show"}</button></div>
                 </div>
