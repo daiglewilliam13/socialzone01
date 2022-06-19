@@ -19,8 +19,37 @@ const Reply: FC<ReplyProps> = (props): JSX.Element => {
     }
     let commentsClassStr = expandComments ? "expanded" : "collapsed";
     const userInfo = useSelector((state: RootState) => state.authStatus.auth.user)
-    console.log(userInfo)
     const url = 'http://localhost:8080/v1';
+    const addLike = async () => {
+        const userId = {
+            id: userInfo.id
+        }
+        const result = await fetch(url+ "/posts/" + props.parentId +"/like",{
+            method: 'POST',
+            mode: 'cors',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(userId)
+        })
+        const data = await result.json()
+        refreshComments();
+    }
+    const addDislike = async () => {
+        const userId = {
+            id: userInfo.id
+        }
+        const result = await fetch(url + "/posts/" + props.parentId + "/dislike", {
+            method: 'POST',
+            mode: 'cors',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(userId)
+        })
+        const data = await result.json()
+        refreshComments();
+    }
     const getComments = async () => {
         try {
             const result = await fetch(url + "/posts/" + props.parentId, {
@@ -81,7 +110,7 @@ const Reply: FC<ReplyProps> = (props): JSX.Element => {
                 <button className="post-reply-submit" onClick={submitComment}>Reply</button>
                 <div className="engagement-wrapper">
                     <div className="vote-wrapper">
-                        <BiUpArrow className="vote-icon" />{likes} <BiDownArrow className="vote-icon" />{dislikes}
+                        <BiUpArrow className="vote-icon" onClick={addLike}/>{likes} <BiDownArrow className="vote-icon" onClick={addDislike}/>{dislikes}
                     </div>
                     <div className="comments-numbers">{comments.length} Comments<button onClick={showComments} className="show-comments">{expandComments ? "hide" : "show"}</button></div>
                 </div>

@@ -7,10 +7,11 @@
         min-height: 3rem;
         padding: .5rem;
         border-radius: 3px;
+        flex-wrap: wrap;
     }
     
     textarea.post-reply{
-        width: 80%;
+        width: 100%;
         border: none;
 
     }
