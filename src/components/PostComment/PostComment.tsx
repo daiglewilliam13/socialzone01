@@ -1,5 +1,6 @@
 
 import React, {useState, useEffect} from "react";
+import { Link } from "react-router-dom";
 import './postcomment.css';
 interface CommentProps {
     commentId: string,
@@ -7,6 +8,7 @@ interface CommentProps {
 const PostComment: React.FC<CommentProps> = props => {
     const [text, setText] = useState<string>('')
     const [name, setName] = useState<string>('');
+    const [userId, setUserId] = useState<string>('')
     const [datePosted, setDatePosted] = useState<string>('');
 
     const url = "http://localhost:8080/v1/comments/";
@@ -21,11 +23,12 @@ const PostComment: React.FC<CommentProps> = props => {
         setDatePosted(result.data.created)
         setText(result.data.text)
         setName(result.data.username)
+        setUserId(result.data.userId)
     }
     useEffect(()=>{getPostText()}, [])
     return(
         <div className="comment-reply-wrapper">
-            <p>By {name} on {datePosted}</p>
+            <Link to={`/profile/${userId}`}> <p>By {name} on {datePosted}</p></Link>
             <p>{text}</p>
         </div>
     )
