@@ -14,6 +14,7 @@ const Reply: FC<ReplyProps> = (props): JSX.Element => {
     const [likes, setLikes] = useState(0)
     const [dislikes, setDislikes] = useState(0)
     const [comments, setComments] = useState<any>([])
+    const [likeStatus, setLikeStatus] = useState<string>('none')
     const showComments = () => {
         setExpandComments(expandComments => !expandComments)
     }
@@ -34,6 +35,7 @@ const Reply: FC<ReplyProps> = (props): JSX.Element => {
         })
         const data = await result.json()
         refreshComments();
+        return data;
     }
     const addDislike = async () => {
         const userId = {
@@ -49,6 +51,7 @@ const Reply: FC<ReplyProps> = (props): JSX.Element => {
         })
         const data = await result.json()
         refreshComments();
+        return data;
     }
     const getComments = async () => {
         try {
@@ -67,18 +70,29 @@ const Reply: FC<ReplyProps> = (props): JSX.Element => {
     }
     const refreshComments = () =>{
         getComments().then((res) => {
+            if(res.data.likedBy.includes(userInfo.id)){
+                setLikeStatus('liked')
+            } else if(res.data.dislikedBy.includes(userInfo.id)){
+                setLikeStatus('disliked')
+            } else {
+                setLikeStatus('none')
+            }
             setComments(res.data.comments);
             setLikes(res.data.likes)
             setDislikes(res.data.dislikes)
+
         })
     }
     const submitComment = async () => {
-        setIsLoading(true)
-        const commentData = {
-            username: userInfo.name,
-            userId: userInfo.id,
-            text: replyText,
-            replyTo: props.parentId
+        if(replyText==''){
+            alert('type a reply')
+        } else {
+            setIsLoading(true)
+            const commentData = {
+                username: userInfo.name,
+                userId: userInfo.id,
+                text: replyText,
+                replyTo: props.parentId
         }
         const response = await fetch(url + '/comments', {
             method: 'POST',
@@ -92,8 +106,30 @@ const Reply: FC<ReplyProps> = (props): JSX.Element => {
         });
         refreshComments();
         setReplyText('')
-
     }
+    }
+    const handleLike = (direction: string) => {
+        if (direction == 'up') {
+            if (likeStatus === 'liked' || likeStatus === 'none') {
+
+                addLike();
+            } else {
+                console.log('removing dislike')
+                addDislike().then((res)=>{
+                    addLike()
+                })
+            }
+        } else {
+            if (likeStatus === 'disliked' || likeStatus==='none') {
+                addDislike();
+            } else {
+                addLike().then((res)=>{
+                    addDislike()
+                });
+            }
+        }
+
+    }   
 
     const commentArray = comments.map((id: string) => {
         return (
@@ -110,7 +146,7 @@ const Reply: FC<ReplyProps> = (props): JSX.Element => {
                 <button className="post-reply-submit" onClick={submitComment}>Reply</button>
                 <div className="engagement-wrapper">
                     <div className="vote-wrapper">
-                        <BiUpArrow className="vote-icon" onClick={addLike}/>{likes} <BiDownArrow className="vote-icon" onClick={addDislike}/>{dislikes}
+                        <BiUpArrow className="vote-icon" onClick={() => { handleLike('up') }} />{likes} {likeStatus}<BiDownArrow className="vote-icon" onClick={() => { handleLike('down') }}/>{dislikes}
                     </div>
                     <div className="comments-numbers">{comments.length} Comments<button onClick={showComments} className="show-comments">{expandComments ? "hide" : "show"}</button></div>
                 </div>
