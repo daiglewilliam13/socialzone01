@@ -25,7 +25,7 @@ const Reply: FC<ReplyProps> = (props): JSX.Element => {
         const userId = {
             id: userInfo.id
         }
-        const result = await fetch(url+ "/posts/" + props.parentId +"/like",{
+        const result = await fetch(url + "/posts/" + props.parentId + "/like", {
             method: 'POST',
             mode: 'cors',
             headers: {
@@ -68,11 +68,11 @@ const Reply: FC<ReplyProps> = (props): JSX.Element => {
             console.log(err)
         }
     }
-    const refreshComments = () =>{
+    const refreshComments = () => {
         getComments().then((res) => {
-            if(res.data.likedBy.includes(userInfo.id)){
+            if (res.data.likedBy.includes(userInfo.id)) {
                 setLikeStatus('liked')
-            } else if(res.data.dislikedBy.includes(userInfo.id)){
+            } else if (res.data.dislikedBy.includes(userInfo.id)) {
                 setLikeStatus('disliked')
             } else {
                 setLikeStatus('none')
@@ -80,11 +80,11 @@ const Reply: FC<ReplyProps> = (props): JSX.Element => {
             setComments(res.data.comments);
             setLikes(res.data.likes)
             setDislikes(res.data.dislikes)
-
+            setIsLoading(false)
         })
     }
     const submitComment = async () => {
-        if(replyText==''){
+        if (replyText == '') {
             alert('type a reply')
         } else {
             setIsLoading(true)
@@ -93,50 +93,54 @@ const Reply: FC<ReplyProps> = (props): JSX.Element => {
                 userId: userInfo.id,
                 text: replyText,
                 replyTo: props.parentId
+            }
+            const response = await fetch(url + '/comments', {
+                method: 'POST',
+                mode: 'cors',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(commentData)
+            }).then((res) => {
+                return res.json()
+            });
+            refreshComments();
+            setReplyText('')
         }
-        const response = await fetch(url + '/comments', {
-            method: 'POST',
-            mode: 'cors',
-            headers: {
-                'Content-Type': 'application/json',
-            },
-            body: JSON.stringify(commentData)
-        }).then((res) => {
-            return res.json()
-        });
-        refreshComments();
-        setReplyText('')
-    }
     }
     const handleLike = (direction: string) => {
+        setIsLoading(true)
         if (direction == 'up') {
             if (likeStatus === 'liked' || likeStatus === 'none') {
 
-                addLike();
+                addLike()
+                    .then(() => setIsLoading(false));
             } else {
-                console.log('removing dislike')
-                addDislike().then((res)=>{
+                addDislike().then((res) => {
                     addLike()
+                        .then(() => setIsLoading(false));
                 })
             }
         } else {
-            if (likeStatus === 'disliked' || likeStatus==='none') {
-                addDislike();
+            if (likeStatus === 'disliked' || likeStatus === 'none') {
+                addDislike()
+                    .then(() => setIsLoading(false));;
             } else {
-                addLike().then((res)=>{
+                addLike().then((res) => {
                     addDislike()
+                        .then(() => setIsLoading(false));
                 });
             }
         }
 
-    }   
+    }
 
     const commentArray = comments.map((id: string) => {
         return (
             <PostComment commentId={id} />
         )
     })
-    useEffect(()=> {
+    useEffect(() => {
         refreshComments();
     }, [])
     return (
@@ -145,9 +149,15 @@ const Reply: FC<ReplyProps> = (props): JSX.Element => {
                 <textarea value={replyText} placeholder="Type your reply here..." className="post-reply" onChange={(e) => setReplyText(e.target.value)}></textarea>
                 <button className="post-reply-submit" onClick={submitComment}>Reply</button>
                 <div className="engagement-wrapper">
-                    <div className="vote-wrapper">
-                        <BiUpArrow className="vote-icon" onClick={() => { handleLike('up') }} />{likes} {likeStatus}<BiDownArrow className="vote-icon" onClick={() => { handleLike('down') }}/>{dislikes}
-                    </div>
+                    {isLoading ?
+                        <div className="vote-wrapper">
+                            <BiUpArrow className="vote-icon" />...<BiDownArrow className="vote-icon" />...
+                        </div>
+                        :<div className="vote-wrapper">
+                            <BiUpArrow className="vote-icon" onClick={() => { handleLike('up') }} />{likes} <BiDownArrow className="vote-icon" onClick={() => { handleLike('down') }} />{dislikes}
+                        </div>
+
+                    }
                     <div className="comments-numbers">{comments.length} Comments<button onClick={showComments} className="show-comments">{expandComments ? "hide" : "show"}</button></div>
                 </div>
             </div>
