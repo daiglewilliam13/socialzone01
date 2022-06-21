@@ -62,6 +62,10 @@ const ShowProfile: FC<ProfileProps> = (props): JSX.Element => {
             <Post post={currentPost}/>
         )
     })
+
+    const addToFriends = () => {
+        alert('added')
+    }
     useEffect(() => {
         getPosts(props.id).then((res) => {
             setPosts(res);
@@ -76,7 +80,6 @@ const ShowProfile: FC<ProfileProps> = (props): JSX.Element => {
                     <img className="profile-header-img" src={img}></img>
                     <p>{userInfo.name}</p>
                     <p>{postArray.length} posts</p>
-                    <p>{userInfo.timelineComments.length} comments</p>
                     <p>{userInfo.isEmailVerified ? "Verified" : "Not Verified"} </p>
                     <button>Add to Friends</button>
                     <button>Message</button>
