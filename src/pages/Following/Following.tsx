@@ -10,6 +10,9 @@ const Friends = () => {
         <>
             <TopNav />
             <SideNav />
+            <div className="following-wrapper">
+                
+            </div>
         </>
     )
 }

@@ -2,20 +2,27 @@ import React from 'react';
 import './sidenav.css';
 import { useState } from 'react';
 import { FaChevronLeft} from 'react-icons/fa';
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 import { RootState } from '../../app/store';
 import { useNavigate } from 'react-router-dom';
+import { collapse, expand } from '../../reducers/SideNavSlice';
 
 
 const SideNav = () => {
+    const dispatch= useDispatch();
     const navigate = useNavigate();
     const authStatus = useSelector((state: RootState) => state.authStatus);
     const id = useSelector((state: RootState) => state.authStatus.auth.user.id)
     const refreshToken = authStatus.auth.tokens.refresh.token;
-    const [expanded, setExpanded] = useState(false);
-    const sidenavStatus = expanded ? 'expanded' : 'collapsed';
+    let expanded = useSelector((state:RootState)=>state.sideNavStatus.expanded)
+    console.log(expanded)
+    let sidenavStatus = expanded==true ? "expanded" : "collapsed";
     const moveSideBar = () => {
-        setExpanded(expanded => !expanded);
+        if(expanded==false){
+            dispatch({type:expand, payload: true})
+        } else {
+            dispatch({type:collapse, payload: false})
+        }
     }
     const handleLogout = () => {
         fetch('http://localhost:8080/v1/auth/logout', {
