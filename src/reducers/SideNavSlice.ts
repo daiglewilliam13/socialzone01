@@ -11,11 +11,9 @@ const sideNavSlice = createSlice({
     initialState,
     reducers: {
         expand: (state, action)=>{
-            console.log('expand reducer');
             state.expanded=action.payload;
         },
         collapse: (state, action)=>{
-            console.log('collapse reducer')
             state.expanded=action.payload;
         }
     },

@@ -14,8 +14,7 @@ const SideNav = () => {
     const authStatus = useSelector((state: RootState) => state.authStatus);
     const id = useSelector((state: RootState) => state.authStatus.auth.user.id)
     const refreshToken = authStatus.auth.tokens.refresh.token;
-    let expanded = useSelector((state:RootState)=>state.sideNavStatus.expanded)
-    console.log(expanded)
+    let expanded = useSelector((state:RootState)=>state.sideNavStatus.expanded);
     let sidenavStatus = expanded==true ? "expanded" : "collapsed";
     const moveSideBar = () => {
         if(expanded==false){
