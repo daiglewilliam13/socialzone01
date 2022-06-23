@@ -1,19 +1,22 @@
 import { createSlice, PayloadAction} from '@reduxjs/toolkit';
 import { RootState } from '../app/store';
 
-
-let initialState = {
-    expanded: false
+interface sideNavStatus {
+    expanded: string
 }
+
+let initialState: sideNavStatus = {
+    expanded: "false"
+} 
 
 const sideNavSlice = createSlice({
     name: 'SideNavSlice',
     initialState,
     reducers: {
-        expand: (state, action)=>{
+        expand: (state, action: PayloadAction<string>)=>{
             state.expanded=action.payload;
         },
-        collapse: (state, action)=>{
+        collapse: (state, action: PayloadAction<string>)=>{
             state.expanded=action.payload;
         }
     },

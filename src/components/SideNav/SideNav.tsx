@@ -14,13 +14,13 @@ const SideNav = () => {
     const authStatus = useSelector((state: RootState) => state.authStatus);
     const id = useSelector((state: RootState) => state.authStatus.auth.user.id)
     const refreshToken = authStatus.auth.tokens.refresh.token;
-    let expanded = useSelector((state:RootState)=>state.sideNavStatus.expanded);
-    let sidenavStatus = expanded==true ? "expanded" : "collapsed";
+    let expanded = useSelector((state:RootState)=>state.sideNavStatus.expanded);;
+    let sidenavStatus = expanded=='true' ? "expanded" : "collapsed";
     const moveSideBar = () => {
-        if(expanded==false){
-            dispatch({type:expand, payload: true})
+        if(expanded=='false'){
+            dispatch(expand('true'))
         } else {
-            dispatch({type:collapse, payload: false})
+            dispatch(collapse('false'))
         }
     }
     const handleLogout = () => {
