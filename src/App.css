@@ -8,6 +8,15 @@ a {
   color:#7155DE;
 }
 
+.content-wrapper {
+  transition: 250ms;
+}
+
+.allow-sidebar{
+  margin-left: 10rem;
+  transition: 250ms;
+}
+
 a:visited{
   color:#ddd4ff
 }

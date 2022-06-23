@@ -1,7 +1,6 @@
 import React from "react";
 import SideNav from "../../components/SideNav/SideNav";
 import TopNav from "../../components/TopNav/TopNav";
-import FriendList from "../../components/FriendList/FriendList";
 
 
 const Friends = () => {
@@ -10,8 +9,8 @@ const Friends = () => {
         <>
             <TopNav />
             <SideNav />
-            <div className="following-wrapper">
-                
+            <div className="content-wrapper">
+                <p>CONTENT</p>
             </div>
         </>
     )

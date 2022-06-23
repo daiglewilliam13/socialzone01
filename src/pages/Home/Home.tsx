@@ -15,11 +15,13 @@ const Home = () => {
               name: userInfo.name,
               id: userInfo.id
        }
+       const allowSideBar = useSelector((state: RootState) => state.sideNavStatus.expanded)
+       let classStr = allowSideBar == 'true' ? 'allow-sidebar' : '';
        return (
               <>
                      <TopNav />
                      <SideNav />
-                     <div className="home-wrapper">
+                     <div className={`content-wrapper ${classStr}`}>
                             <CreatePost user={user} />
                             <Feed />
                             <FriendList />
