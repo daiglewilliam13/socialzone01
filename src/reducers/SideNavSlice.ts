@@ -5,9 +5,9 @@ interface sideNavStatus {
     expanded: string
 }
 
-let initialState: sideNavStatus = {
+let initialState = {
     expanded: "false"
-} 
+} as sideNavStatus
 
 const sideNavSlice = createSlice({
     name: 'SideNavSlice',
