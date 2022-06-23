@@ -3,7 +3,7 @@ import './App.css';
 import Landing from './pages/Landing/Landing';
 import Home from './pages/Home/Home';
 import Profile from './pages/Profile/Profile';
-import Friends from './pages/Friends/Friends';
+import Following from './pages/Following/Following';
 import Messages from './pages/Messages/Messages';
 import { Routes, Route, Navigate } from 'react-router-dom';
 import { useSelector } from 'react-redux';
@@ -24,7 +24,7 @@ function App() {
           } />
           <Route path={'/profile/:id'} element={isLoggedIn ? <Profile /> : <Navigate to="/" />
           } />
-          <Route path="/friends" element={isLoggedIn ? <Friends /> : <Navigate to="/" />
+          <Route path="/following" element={isLoggedIn ? <Following /> : <Navigate to="/" />
           } />
           <Route path="/messages" element={isLoggedIn ? <Messages /> : <Navigate to="/" />
           } />
