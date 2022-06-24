@@ -65,12 +65,14 @@ const ShowProfile: FC<ProfileProps> = (props): JSX.Element => {
     })
 
     const follow = async () => {
+        const myUserId = {id: useSelector((state:RootState)=>state.authStatus.auth.user.id)}
         const response = await fetch(`http://localhost:8080/v1/users/${userInfo.id}/follow`,{
             method: 'POST',
             mode: 'cors',
             headers: {
                 'Content-Type': 'application/json',
             },
+            body: JSON.stringify(myUserId)
         })
         return response.json();
     }
