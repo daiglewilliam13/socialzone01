@@ -10,7 +10,7 @@ interface ProfileProps {
     id: string
 }
 
-const initialUserState = {
+const initialProfileState = {
     role: "",
     isEmailVerified: false,
     email: "",
@@ -56,18 +56,19 @@ const getPosts = async (id: string) => {
 
 const ShowProfile: FC<ProfileProps> = (props): JSX.Element => {
     const [isLoading, setIsLoading] = useState(true)
-    const [userInfo, setUserInfo] = useState(initialUserState)
+    const [profileInfo, setProfileInfo] = useState(initialProfileState)
     const [posts, setPosts] = useState(initialPostState)
+    const [followStatus, setFollowStats] = useState(false)
     const token = useSelector((state: RootState) => state.authStatus.auth.tokens.access.token)
+    const myUserId = {id: useSelector((state:RootState)=>state.authStatus.auth.user.id)}
     const postArray = posts.map((currentPost)=>{
         return(
             <Post post={currentPost}/>
         )
     })
 
-    const myUserId = {id: useSelector((state:RootState)=>state.authStatus.auth.user.id)}
     const follow = async () => {
-        const response = await fetch(`http://localhost:8080/v1/users/${userInfo.id}/follow`,{ //the user you want to follow
+        const response = await fetch(`http://localhost:8080/v1/users/${profileInfo.id}/follow`,{ //the user you want to follow
             method: 'POST',
             mode: 'cors',
             headers: {
@@ -82,22 +83,22 @@ const ShowProfile: FC<ProfileProps> = (props): JSX.Element => {
             setPosts(res);
             setIsLoading(false)
         })
-        getUser(props.id, token).then((res) => { setUserInfo(res)})
+        getUser(props.id, token).then((res) => { setProfileInfo(res)})
     }, [])
     return (
         <>
             <div className="profile-wrapper">
                 <div className="profile-header">
                     <img className="profile-header-img" src={img}></img>
-                    <p>{userInfo.name}</p>
+                    <p>{profileInfo.name}</p>
                     <p>{postArray.length} posts</p>
-                    <p>{userInfo.isEmailVerified ? "Verified" : "Not Verified"} </p>
+                    <p>{profileInfo.isEmailVerified ? "Verified" : "Not Verified"} </p>
                     <button onClick={()=>{follow().then((res)=>console.log(res))}}>Follow</button>
                     <button>Message</button>
                     <button>Block</button>
                 </div>
                 <div className="timeline-wrapper">
-                    <h3>Posts by {userInfo.name}</h3><hr></hr>
+                    <h3>Posts by {profileInfo.name}</h3><hr></hr>
                 </div>
                 <div> 
                     {isLoading ? "Fetching Posts..." : postArray}
