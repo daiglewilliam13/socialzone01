@@ -22,13 +22,13 @@ function App() {
           <Route path="/home" element={
             isLoggedIn ? <Home /> : <Navigate to="/" />
           } />
-          <Route path={'/profile/:id'} element={isLoggedIn ? <Profile /> : <Navigate to="/" />
+          <Route path={'/profile/:id/'} element={isLoggedIn ? <Profile /> : <Navigate to="/" />
           } />
-          <Route path="/following" element={isLoggedIn ? <Following /> : <Navigate to="/" />
+          <Route path="/following/" element={isLoggedIn ? <Following /> : <Navigate to="/" />
           } />
-          <Route path="/messages" element={isLoggedIn ? <Messages /> : <Navigate to="/" />
+          <Route path="/messages/" element={isLoggedIn ? <Messages /> : <Navigate to="/" />
           } />
-          <Route path="/notifications" element={isLoggedIn ? <Notifications /> : <Navigate to="/" />
+          <Route path="/notifications/" element={isLoggedIn ? <Notifications /> : <Navigate to="/" />
           } />
         </Routes>
       </>

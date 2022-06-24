@@ -10,13 +10,14 @@ interface ProfileProps {
     id: string
 }
 
-const initialState = {
+const initialUserState = {
     role: "",
     isEmailVerified: false,
     email: "",
     name: "",
     timelinePosts: [],
-    timelineComments: []
+    timelineComments: [],
+    id: ""
 
 }
 const initialPostState = [{
@@ -54,7 +55,7 @@ const getPosts = async (id: string) => {
 
 const ShowProfile: FC<ProfileProps> = (props): JSX.Element => {
     const [isLoading, setIsLoading] = useState(true)
-    const [userInfo, setUserInfo] = useState(initialState)
+    const [userInfo, setUserInfo] = useState(initialUserState)
     const [posts, setPosts] = useState(initialPostState)
     const token = useSelector((state: RootState) => state.authStatus.auth.tokens.access.token)
     const postArray = posts.map((currentPost)=>{
@@ -63,8 +64,15 @@ const ShowProfile: FC<ProfileProps> = (props): JSX.Element => {
         )
     })
 
-    const addToFriends = () => {
-        alert('added')
+    const follow = async () => {
+        const response = await fetch(`http://localhost:8080/v1/users/${userInfo.id}/follow`,{
+            method: 'POST',
+            mode: 'cors',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+        })
+        return response.json();
     }
     useEffect(() => {
         getPosts(props.id).then((res) => {
@@ -81,7 +89,7 @@ const ShowProfile: FC<ProfileProps> = (props): JSX.Element => {
                     <p>{userInfo.name}</p>
                     <p>{postArray.length} posts</p>
                     <p>{userInfo.isEmailVerified ? "Verified" : "Not Verified"} </p>
-                    <button>Add to Friends</button>
+                    <button onClick={()=>{follow().then((res)=>console.log(res))}}>Follow</button>
                     <button>Message</button>
                     <button>Block</button>
                 </div>
