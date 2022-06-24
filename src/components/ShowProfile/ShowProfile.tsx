@@ -17,8 +17,9 @@ const initialUserState = {
     name: "",
     timelinePosts: [],
     timelineComments: [],
-    id: ""
-
+    id: "",
+    followers:[],
+    following:[],
 }
 const initialPostState = [{
     id: "",
@@ -64,15 +65,15 @@ const ShowProfile: FC<ProfileProps> = (props): JSX.Element => {
         )
     })
 
+    const myUserId = {id: useSelector((state:RootState)=>state.authStatus.auth.user.id)}
     const follow = async () => {
-        const myUserId = {id: useSelector((state:RootState)=>state.authStatus.auth.user.id)}
-        const response = await fetch(`http://localhost:8080/v1/users/${userInfo.id}/follow`,{
+        const response = await fetch(`http://localhost:8080/v1/users/${userInfo.id}/follow`,{ //the user you want to follow
             method: 'POST',
             mode: 'cors',
             headers: {
                 'Content-Type': 'application/json',
             },
-            body: JSON.stringify(myUserId)
+            body: JSON.stringify(myUserId) //logged in user Id initiating the follow
         })
         return response.json();
     }
