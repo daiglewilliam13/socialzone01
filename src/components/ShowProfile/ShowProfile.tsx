@@ -15,11 +15,11 @@ const initialProfileState = {
     isEmailVerified: false,
     email: "",
     name: "",
-    timelinePosts: [],
-    timelineComments: [],
+    timelinePosts: [""],
+    timelineComments: [""],
     id: "",
-    followers:[],
-    following:[],
+    followers:[""],
+    following:[""],
 }
 const initialPostState = [{
     id: "",
@@ -58,17 +58,18 @@ const ShowProfile: FC<ProfileProps> = (props): JSX.Element => {
     const [isLoading, setIsLoading] = useState(true)
     const [profileInfo, setProfileInfo] = useState(initialProfileState)
     const [posts, setPosts] = useState(initialPostState)
-    const [followStatus, setFollowStats] = useState(false)
+    const [followStatus, setFollowStatus] = useState(false)
     const token = useSelector((state: RootState) => state.authStatus.auth.tokens.access.token)
-    const myUserId = {id: useSelector((state:RootState)=>state.authStatus.auth.user.id)}
+    const myUserId = {id: useSelector((state:RootState)=>state.authStatus.auth.user.id) || ''} 
     const postArray = posts.map((currentPost)=>{
         return(
             <Post post={currentPost}/>
         )
     })
-
+    
     const follow = async () => {
-        const response = await fetch(`http://localhost:8080/v1/users/${profileInfo.id}/follow`,{ //the user you want to follow
+        let URL = `http://localhost:8080/v1/users/${profileInfo.id}/${followStatus ? 'un' : ''}follow`;
+        const response = await fetch(URL,{ //the user you want to follow
             method: 'POST',
             mode: 'cors',
             headers: {
@@ -83,17 +84,24 @@ const ShowProfile: FC<ProfileProps> = (props): JSX.Element => {
             setPosts(res);
             setIsLoading(false)
         })
-        getUser(props.id, token).then((res) => { setProfileInfo(res)})
+        getUser(props.id, token).then((res) => {
+            setProfileInfo(res)
+            console.log(res)
+            if (res.followers.includes(myUserId.id)) {
+                setFollowStatus(true)
+            }
+        })
     }, [])
     return (
         <>
+        {console.log(followStatus)}
             <div className="profile-wrapper">
                 <div className="profile-header">
                     <img className="profile-header-img" src={img}></img>
                     <p>{profileInfo.name}</p>
                     <p>{postArray.length} posts</p>
                     <p>{profileInfo.isEmailVerified ? "Verified" : "Not Verified"} </p>
-                    <button onClick={()=>{follow().then((res)=>console.log(res))}}>Follow</button>
+                    <button onClick={()=>follow().then((res)=>console.log(res))}>{followStatus ? "Unfollow" : "Follow"}</button>
                     <button>Message</button>
                     <button>Block</button>
                 </div>
