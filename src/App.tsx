@@ -5,6 +5,7 @@ import Home from './pages/Home/Home';
 import Profile from './pages/Profile/Profile';
 import Following from './pages/Following/Following';
 import Messages from './pages/Messages/Messages';
+import SearchResults from './pages/SearchResults/SearchResults';
 import { Routes, Route, Navigate } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import { RootState } from './app/store';
@@ -29,6 +30,8 @@ function App() {
           <Route path="/messages/" element={isLoggedIn ? <Messages /> : <Navigate to="/" />
           } />
           <Route path="/notifications/" element={isLoggedIn ? <Notifications /> : <Navigate to="/" />
+          } />
+          <Route path="/search/results/" element={isLoggedIn ? <SearchResults />  : <Navigate to="/" />
           } />
         </Routes>
       </>
