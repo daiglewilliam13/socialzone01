@@ -69,13 +69,13 @@ const ShowProfile: FC<ProfileProps> = (props): JSX.Element => {
     
     const follow = async () => {
         let URL = `http://localhost:8080/v1/users/${profileInfo.id}/${followStatus ? 'un' : ''}follow`;
-        const response = await fetch(URL,{ //the user you want to follow
+        const response = await fetch(URL,{ //the user you want to (un)follow
             method: 'POST',
             mode: 'cors',
             headers: {
                 'Content-Type': 'application/json',
             },
-            body: JSON.stringify(myUserId) //logged in user Id initiating the follow
+            body: JSON.stringify(myUserId) //logged in user Id initiating the (un)follow
         })
         
         return response.json();
@@ -108,7 +108,7 @@ const ShowProfile: FC<ProfileProps> = (props): JSX.Element => {
                     <p>{profileInfo.name}</p>
                     <p>{postArray.length} posts</p>
                     <p>{profileInfo.isEmailVerified ? "Verified" : "Not Verified"} </p>
-                    <button onClick={()=>follow().then(()=>retUser())}>{followStatus ? "Unfollow" : "Follow"}</button>
+                    <button onClick={()=>follow().then((res)=>{console.log(res);retUser()})}>{followStatus ? "Unfollow" : "Follow"}</button>
                     <button>Message</button>
                     <button>Block</button>
                 </div>
