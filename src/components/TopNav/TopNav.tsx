@@ -15,14 +15,14 @@ const TopNav = () => {
         <div id="topnav">
             <div id="top-link-wrapper">
                 <div className="left-group">
-                    <FaStaylinked onClick={()=>{navigate('/home')}} className="topnav-icon " />
+                    <FaStaylinked onClick={()=>{navigate('/home/')}} className="topnav-icon " />
                     <input type="text" id="search-bar" placeholder='Search...'></input>
-                    <FaSearch className="topnav-icon" />
+                    <FaSearch className="topnav-icon" onClick={()=>{navigate('/search/results/')}}/>
                 </div>
                 <div className="right-group">
                     <span>{username}</span>
-                    <FaBell onClick={()=>{navigate('/notifications')}} className="topnav-icon right-side" />
-                    <FaEnvelope onClick={() => { navigate('/messages') }} className="topnav-icon right-side" />
+                    <FaBell onClick={()=>{navigate('/notifications/')}} className="topnav-icon right-side" />
+                    <FaEnvelope onClick={() => { navigate('/messages/') }} className="topnav-icon right-side" />
                     <img onClick={() => { navigate('/profile/'+id) }} id="topnav-profile-photo" className="right-side" src={img} />
                 </div>
             </div>

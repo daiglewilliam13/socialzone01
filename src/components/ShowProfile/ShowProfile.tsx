@@ -77,13 +77,10 @@ const ShowProfile: FC<ProfileProps> = (props): JSX.Element => {
             },
             body: JSON.stringify(myUserId) //logged in user Id initiating the follow
         })
+        
         return response.json();
     }
-    useEffect(() => {
-        getPosts(props.id).then((res) => {
-            setPosts(res);
-            setIsLoading(false)
-        })
+    const retUser = () => {
         getUser(props.id, token).then((res) => {
             setProfileInfo(res)
             console.log(res)
@@ -91,6 +88,16 @@ const ShowProfile: FC<ProfileProps> = (props): JSX.Element => {
                 setFollowStatus(true)
             }
         })
+    }
+    const retrievePosts = () =>{
+        getPosts(props.id).then((res) => {
+            setPosts(res);
+            setIsLoading(false)
+        })
+    }
+    useEffect(() => {
+        retrievePosts();
+        retUser();
     }, [])
     return (
         <>
@@ -101,7 +108,7 @@ const ShowProfile: FC<ProfileProps> = (props): JSX.Element => {
                     <p>{profileInfo.name}</p>
                     <p>{postArray.length} posts</p>
                     <p>{profileInfo.isEmailVerified ? "Verified" : "Not Verified"} </p>
-                    <button onClick={()=>follow().then((res)=>console.log(res))}>{followStatus ? "Unfollow" : "Follow"}</button>
+                    <button onClick={()=>follow().then(()=>retUser())}>{followStatus ? "Unfollow" : "Follow"}</button>
                     <button>Message</button>
                     <button>Block</button>
                 </div>
