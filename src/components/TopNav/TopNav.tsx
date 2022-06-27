@@ -12,13 +12,16 @@ const TopNav = () => {
     const username = authStatus.auth.user.name
     const id = authStatus.auth.user.id;
     const [searchTerms, setSearchTerms] = useState("")
+    const toSearchPage = () => {
+        navigate('/search/', {state: {terms: searchTerms}})
+    }
     return (
         <div id="topnav">
             <div id="top-link-wrapper">
                 <div className="left-group">
                     <FaStaylinked onClick={()=>{navigate('/home/')}} className="topnav-icon " />
                     <input type="text" id="search-bar" placeholder='Search...' value={searchTerms} onChange={(e)=>{setSearchTerms(e.target.value)}}></input>
-                    <FaSearch className="topnav-icon" onClick={()=>{navigate('/search/')}}/>
+                    <FaSearch className="topnav-icon" onClick={()=>toSearchPage()}/>
                 </div>
                 <div className="right-group">
                     <span>{username}</span>
