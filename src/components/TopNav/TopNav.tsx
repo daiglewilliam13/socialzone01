@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState} from 'react';
 import './topnav.css';
 import { FaStaylinked, FaSearch, FaBell, FaEnvelope, } from 'react-icons/fa';
 import img from '../../images/john-doe.jpg';
@@ -11,13 +11,14 @@ const TopNav = () => {
     const authStatus = useSelector((state: RootState) => state.authStatus);
     const username = authStatus.auth.user.name
     const id = authStatus.auth.user.id;
+    const [searchTerms, setSearchTerms] = useState("")
     return (
         <div id="topnav">
             <div id="top-link-wrapper">
                 <div className="left-group">
                     <FaStaylinked onClick={()=>{navigate('/home/')}} className="topnav-icon " />
-                    <input type="text" id="search-bar" placeholder='Search...'></input>
-                    <FaSearch className="topnav-icon" onClick={()=>{navigate('/search/results/')}}/>
+                    <input type="text" id="search-bar" placeholder='Search...' value={searchTerms} onChange={(e)=>{setSearchTerms(e.target.value)}}></input>
+                    <FaSearch className="topnav-icon" onClick={()=>{navigate('/search/')}}/>
                 </div>
                 <div className="right-group">
                     <span>{username}</span>

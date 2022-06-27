@@ -1,12 +1,25 @@
-import React, {useState} from "react";
+import React, { useState, useEffect } from "react";
 import SideNav from "../../components/SideNav/SideNav";
 import TopNav from "../../components/TopNav/TopNav";
+import { Link } from "react-router-dom";
 
-
-const SearchResults = () =>{
+const initialProfileState = {
+    role: "",
+    isEmailVerified: false,
+    email: "",
+    name: "",
+    timelinePosts: [""],
+    timelineComments: [""],
+    id: "",
+    followers: [""],
+    following: [""],
+}
+const SearchResults = () => {
+    const [users, setUsers] = useState([initialProfileState]);
+    const [posts, setPosts] = useState([]);
     let URL = 'http://localhost:8080/v1/search/'
-    const getUsers = async () =>{
-        const response = await fetch(URL,{
+    const getResults = async () => {
+        const response = await fetch(URL, {
             method: 'GET',
             mode: 'cors',
             headers: {
@@ -15,12 +28,35 @@ const SearchResults = () =>{
         })
         return response.json();
     }
-    return(
+    const userArray = users.map((user)=>{
+        return(
+            <>
+            <p><Link to={`/profile/${user.id}`}>{user.name}</Link></p>
+            <p>{user.email}</p>
+            <p>{user.followers.length} followers</p>
+            <p>{user.timelinePosts}</p>
+            </>
+        )
+    })
+    useEffect(() => {
+        getResults()
+    }, [])
+    return (
         <>
-        <SideNav />
-        <TopNav />
-        <p>SEARCH RESULTS</p>
-        <button onClick={()=>getUsers().then((res)=>console.log(res))}> SEARCH</button>
+            <SideNav />
+            <TopNav />
+            <p>SEARCH RESULTS</p>
+            <button onClick={() =>
+                getResults()
+                    .then((res) => {
+                        setUsers(res.users)
+                        setPosts(res.posts)
+                    }
+                    )}
+            >SEARCH</button>
+            <div>
+                {userArray}
+            </div>
         </>
     )
 }

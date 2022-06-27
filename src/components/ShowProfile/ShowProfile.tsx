@@ -86,6 +86,8 @@ const ShowProfile: FC<ProfileProps> = (props): JSX.Element => {
             console.log(res)
             if (res.followers.includes(myUserId.id)) {
                 setFollowStatus(true)
+            } else {
+                setFollowStatus(false)
             }
         })
     }
@@ -105,8 +107,8 @@ const ShowProfile: FC<ProfileProps> = (props): JSX.Element => {
             <div className="profile-wrapper">
                 <div className="profile-header">
                     <img className="profile-header-img" src={img}></img>
-                    <p>{profileInfo.name}</p>
-                    <p>{postArray.length} posts</p>
+                    <p>{profileInfo.name} </p>
+                    <p>{postArray.length} posts </p>
                     <p>{profileInfo.isEmailVerified ? "Verified" : "Not Verified"} </p>
                     <button onClick={()=>follow().then((res)=>{console.log(res);retUser()})}>{followStatus ? "Unfollow" : "Follow"}</button>
                     <button>Message</button>
