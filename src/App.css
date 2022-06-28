@@ -4,23 +4,31 @@ body {
   padding: 0;
   width: 100%;
 }
+
 a {
-  color:#7155DE;
+  color: #7155DE;
+}
+
+input {
+  height: 1.5rem;
+  font-size: 1.2rem;
+  padding: .2rem;
 }
 
 .content-wrapper {
-  margin-top: 4rem;
+  margin-top: 3rem;
   transition: 250ms;
 }
 
-.allow-sidebar{
+.allow-sidebar {
   margin-left: 10rem;
   transition: 250ms;
 }
 
-a:visited{
-  color:#ddd4ff
+a:visited {
+  color: #ddd4ff
 }
+
 .App {
   text-align: center;
 }
@@ -53,9 +61,11 @@ a:visited{
   0% {
     transform: translateY(0);
   }
+
   50% {
     transform: translateY(10px);
   }
+
   100% {
     transform: translateY(0px);
   }

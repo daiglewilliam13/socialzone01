@@ -37,9 +37,9 @@ const Login = () => {
                 <div className="form-wrapper" id="login-form">
                     <form>
                         <label htmlFor="email">Email Address:</label>
-                        <input required placeholder='email@example.com' type="text" name="email" onChange={(e) => { setEmail(e.target.value) }}></input>
+                        <input className="login-input" required placeholder='email@example.com' type="text" name="email" onChange={(e) => { setEmail(e.target.value) }}></input>
                         <label htmlFor="password">Password:</label>
-                        <input required placeholder='Password' type="password" name="password" onChange={(e) => { setPassword(e.target.value) }}></input>
+                        <input className="login-input" required placeholder='Password' type="password" name="password" onChange={(e) => { setPassword(e.target.value) }}></input>
                         <button type='submit' id="login-button" onClick={(e) => handleLogin(e, email, password)}>{buttonText}</button>
                     </form>
                 </div>

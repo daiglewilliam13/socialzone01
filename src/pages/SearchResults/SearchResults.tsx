@@ -55,10 +55,9 @@ const SearchResults = () => {
             .then((res) => {
                 if(res.users.length==0 && res.posts.length==0){
                     setNoResults(true)
-                } else {
+                }
                     setUsers(res.users)
                     setPosts(res.posts)
-                }
             })
         } catch (err) {
             setError(true)
@@ -72,10 +71,12 @@ const SearchResults = () => {
             <SideNav />
             <TopNav />
             <div className={`content-wrapper ${classStr}`}>
-                <p>SEARCH RESULTS</p>
+                <p>Search Results for: "{query}"</p>
+                <p>Found Users:</p>
                 <div>
                     {userArray}
                 </div>
+                <p>Found Posts:</p>
                 <div>
                     {postArray}
                 </div>
