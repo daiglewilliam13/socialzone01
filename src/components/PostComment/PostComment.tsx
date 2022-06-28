@@ -19,7 +19,6 @@ const PostComment: React.FC<CommentProps> = props => {
         }).then((res)=>{ 
             return res.json()
         })
-        console.log(result)
         setDatePosted(result.data.created)
         setText(result.data.text)
         setName(result.data.username)

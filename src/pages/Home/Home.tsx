@@ -24,7 +24,6 @@ const Home = () => {
                      <div className={`content-wrapper ${classStr}`}>
                             <CreatePost user={user} />
                             <Feed />
-                            <FriendList />
                      </div>
               </>
        )

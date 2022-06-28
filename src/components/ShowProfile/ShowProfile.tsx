@@ -84,7 +84,6 @@ const ShowProfile: FC<ProfileProps> = (props): JSX.Element => {
     const retUser = () => {
         getUser(props.id, token).then((res) => {
             setProfileInfo(res)
-            console.log(res)
             if (res.followers.includes(myUserId.id)) {
                 setFollowStatus(true)
             } else {
@@ -104,7 +103,6 @@ const ShowProfile: FC<ProfileProps> = (props): JSX.Element => {
     }, [])
     return (
         <>
-        {console.log(followStatus)}
             <div className="profile-wrapper">
                 <div className="profile-header">
                     <img className="profile-header-img" src={img}></img>
