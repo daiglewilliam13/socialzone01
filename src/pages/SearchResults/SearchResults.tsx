@@ -21,6 +21,9 @@ const initialProfileState = {
 const SearchResults = () => {
     const [users, setUsers] = useState([initialProfileState]);
     const [posts, setPosts] = useState([]);
+    const [isFetching, setIsFetching] = useState(true);
+    const [noResults, setNoResults] = useState(false)
+    const [error, setError] = useState(false)
     const {query} = useParams()
     const url: string = 'http://localhost:8080/v1/search/find?terms=' + query;
     let URL = 'http://localhost:8080/v1/search/'
@@ -47,11 +50,22 @@ const SearchResults = () => {
     const allowSideBar = useSelector((state: RootState) => state.sideNavStatus.expanded)
     let classStr = allowSideBar == 'true' ? 'allow-sidebar' : '';
     useEffect(() => {
-        getSearchResults(url)
+        try {
+            getSearchResults(url)
             .then((res) => {
-                setUsers(res.users)
-                setPosts(res.posts)
+                if(res.users.length==0 && res.posts.length==0){
+                    setNoResults(true)
+                } else {
+                    setUsers(res.users)
+                    setPosts(res.posts)
+                }
             })
+        } catch (err) {
+            setError(true)
+            console.log(err)
+        } finally {
+            setIsFetching(false)
+        }
     }, [query])
     return (
         <>
