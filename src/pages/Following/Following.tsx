@@ -14,7 +14,7 @@ const Friends = () => {
     const allowSideBar = useSelector((state: RootState) => 
         state.sideNavStatus.expanded);
     let classStr = allowSideBar == 'true' ? 'allow-sidebar' : '';
-
+    
     const followerArray = followers.map((followerId)=>{
         return(
             <UserDisplayCard id={followerId} />
