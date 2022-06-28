@@ -1,9 +1,14 @@
 import React from "react";
 
-const UserDisplayCard = () =>{ 
+interface UserDisplayCardProps {
+    id: string
+}
+const UserDisplayCard: React.FC<UserDisplayCardProps> = props =>{ 
 
     return(
-        <p>USER DISPLAY CARD</p>
+        <div>
+        <p>{props.id}</p>
+        </div>
     )
 }
 

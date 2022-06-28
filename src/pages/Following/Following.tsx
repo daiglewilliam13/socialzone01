@@ -7,11 +7,24 @@ import UserDisplayCard from '../../components/UserDisplayCard/UserDisplayCard';
 
 
 const Friends = () => {
-    const followers = useSelector((state: RootState)=> {
-        state.authStatus.auth.user.followers
-    })
-    const allowSideBar = useSelector((state: RootState) => state.sideNavStatus.expanded)
+    const followers = useSelector((state: RootState)=>
+        state.authStatus.auth.user.followers);
+    const following = useSelector((state: RootState) =>
+        state.authStatus.auth.user.following);
+    const allowSideBar = useSelector((state: RootState) => 
+        state.sideNavStatus.expanded);
     let classStr = allowSideBar == 'true' ? 'allow-sidebar' : '';
+
+    const followerArray = followers.map((followerId)=>{
+        return(
+            <UserDisplayCard id={followerId} />
+        )
+    })
+    const followingArray = following.map((followerId) => {
+        return (
+            <UserDisplayCard id={followerId} />
+        )
+    })
     return (
         <>
             <TopNav />
@@ -22,25 +35,11 @@ const Friends = () => {
                 </div>
                 <div>
                     <p>Followers:</p>
-                    <UserDisplayCard />
-                    <UserDisplayCard />
-                    <UserDisplayCard />
-                    <UserDisplayCard />
-                    <UserDisplayCard />
-                    <UserDisplayCard />
+                    {followerArray}
                 </div>
                 <div>
                     <p>Following:</p>
-                    <UserDisplayCard />
-                    <UserDisplayCard />
-                    <UserDisplayCard />
-                    <UserDisplayCard />
-                    <UserDisplayCard />
-                    <UserDisplayCard />
-                    <UserDisplayCard />
-                    <UserDisplayCard />
-                    <UserDisplayCard />
-
+                    {followingArray}
                 </div>
             </div>
         </>

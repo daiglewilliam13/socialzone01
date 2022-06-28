@@ -1,10 +1,10 @@
 import React, { useState, useEffect } from "react";
-import SideNav from "../../components/SideNav/SideNav";
-import TopNav from "../../components/TopNav/TopNav";
 import { Link, useLocation, useParams } from "react-router-dom";
-import Post from "../../components/Post/Post";
 import { useSelector } from "react-redux";
 import { RootState } from "../../app/store";
+import SideNav from "../../components/SideNav/SideNav";
+import TopNav from "../../components/TopNav/TopNav";
+import Post from "../../components/Post/Post";
 
 const initialProfileState = {
     role: "",
