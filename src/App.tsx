@@ -31,7 +31,7 @@ function App() {
           } />
           <Route path="/notifications/" element={isLoggedIn ? <Notifications /> : <Navigate to="/" />
           } />
-          <Route path="/search/" element={isLoggedIn ? <SearchResults />  : <Navigate to="/" />
+          <Route path="/search/:query" element={isLoggedIn ? <SearchResults key={Date.now()} />  : <Navigate to="/" />
           } />
         </Routes>
       </>

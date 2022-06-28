@@ -14,7 +14,7 @@ const TopNav = () => {
     const id = authStatus.auth.user.id;
     const [searchTerms, setSearchTerms] = useState("")
     const toSearchPage = () => {
-        navigate('/search/', {replace: true, state: {terms: searchTerms}})
+        navigate('/search/'+searchTerms, {state: {terms: searchTerms}})
     }
     return (
         <div id="topnav">

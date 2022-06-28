@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import SideNav from "../../components/SideNav/SideNav";
 import TopNav from "../../components/TopNav/TopNav";
-import { Link, useLocation } from "react-router-dom";
+import { Link, useLocation, useParams } from "react-router-dom";
 import Post from "../../components/Post/Post";
 import { useSelector } from "react-redux";
 import { RootState } from "../../app/store";
@@ -19,6 +19,14 @@ const initialProfileState = {
 }
 
 const SearchResults = () => {
+    const [users, setUsers] = useState([initialProfileState]);
+    const [posts, setPosts] = useState([]);
+    const [queryTerm, setQueryTerm] = useState()
+    const location = useLocation();
+    const {query} = useParams()
+    console.log(query)
+    const url: string = 'http://localhost:8080/v1/search/find?terms=' + query;
+    let URL = 'http://localhost:8080/v1/search/'
     const getSearchResults = async (searchURL: string) => {
         const searchResults = await fetch(searchURL, {
             method: 'GET',
@@ -26,12 +34,6 @@ const SearchResults = () => {
         })
         return searchResults.json();
     }
-    const location = useLocation();
-    const terms = location.state || '';
-    const url: string = 'http://localhost:8080/v1/search/find?terms=' + JSON.stringify(terms);
-    const [users, setUsers] = useState([initialProfileState]);
-    const [posts, setPosts] = useState([]);
-    let URL = 'http://localhost:8080/v1/search/'
     const userArray = users.map((user) => {
         return (
             <>
@@ -53,7 +55,7 @@ const SearchResults = () => {
                 setUsers(res.users)
                 setPosts(res.posts)
             })
-    }, [])
+    }, [query])
     return (
         <>
             <SideNav />
