@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import SideNav from "../../components/SideNav/SideNav";
 import TopNav from "../../components/TopNav/TopNav";
 import { Link, useLocation } from "react-router-dom";
+import Post from "../../components/Post/Post";
 
 const initialProfileState = {
     role: "",
@@ -15,18 +16,20 @@ const initialProfileState = {
     following: [""],
 }
 
-const getSearchResults = async (searchURL: string) =>{
-    const searchResults = await fetch(searchURL, {
-        method: 'GET',
-        mode: 'cors',
-    })
-    return searchResults.json();
-}
+
+
+
 const SearchResults = () => {
+    const getSearchResults = async (searchURL: string) => {
+        const searchResults = await fetch(searchURL, {
+            method: 'GET',
+            mode: 'cors',
+        })
+        return searchResults.json();
+    }
     const location = useLocation();
     const terms = location.state || '';
-    const url: string = 'http://localhost:8080/v1/search/?search='+terms;
-    console.log(getSearchResults(url))
+    const url: string = 'http://localhost:8080/v1/search/find?terms='+JSON.stringify(terms);
     const [users, setUsers] = useState([initialProfileState]);
     const [posts, setPosts] = useState([]);
     let URL = 'http://localhost:8080/v1/search/'
@@ -50,24 +53,26 @@ const SearchResults = () => {
             </>
         )
     })
+    const postArray = posts.map((currentPost)=>{
+        return <Post post={currentPost} />
+    })
     useEffect(() => {
-        getResults()
+        getSearchResults(url)
+        .then((res) => { 
+            setUsers(res.users)
+            setPosts(res.posts)
+        })
     }, [])
     return (
         <>
             <SideNav />
             <TopNav />
             <p>SEARCH RESULTS</p>
-            <button onClick={() =>
-                getResults()
-                    .then((res) => {
-                        setUsers(res.users)
-                        setPosts(res.posts)
-                    }
-                    )}
-            >SEARCH</button>
             <div>
                 {userArray}
+            </div>
+            <div>
+                {postArray}
             </div>
         </>
     )
