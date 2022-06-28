@@ -9,6 +9,7 @@ a {
 }
 
 .content-wrapper {
+  margin-top: 4rem;
   transition: 250ms;
 }
 
