@@ -21,10 +21,7 @@ const initialProfileState = {
 const SearchResults = () => {
     const [users, setUsers] = useState([initialProfileState]);
     const [posts, setPosts] = useState([]);
-    const [queryTerm, setQueryTerm] = useState()
-    const location = useLocation();
     const {query} = useParams()
-    console.log(query)
     const url: string = 'http://localhost:8080/v1/search/find?terms=' + query;
     let URL = 'http://localhost:8080/v1/search/'
     const getSearchResults = async (searchURL: string) => {
