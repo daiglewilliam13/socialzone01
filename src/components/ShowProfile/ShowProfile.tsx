@@ -20,6 +20,7 @@ const initialProfileState = {
     id: "",
     followers:[""],
     following:[""],
+    createdAt:"",
 }
 const initialPostState = [{
     id: "",
