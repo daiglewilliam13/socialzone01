@@ -4,16 +4,17 @@ import { FaStaylinked, FaSearch, FaBell, FaEnvelope, } from 'react-icons/fa';
 import img from '../../images/john-doe.jpg';
 import { useSelector } from 'react-redux';
 import { RootState } from '../../app/store';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useLocation } from 'react-router-dom';
 
 const TopNav = () => {
+    const location = useLocation();
     const navigate = useNavigate();
     const authStatus = useSelector((state: RootState) => state.authStatus);
     const username = authStatus.auth.user.name
     const id = authStatus.auth.user.id;
     const [searchTerms, setSearchTerms] = useState("")
     const toSearchPage = () => {
-        navigate('/search/', {state: {terms: searchTerms}})
+        navigate('/search/', {replace: true, state: {terms: searchTerms}})
     }
     return (
         <div id="topnav">
