@@ -38,6 +38,7 @@ const UserDisplayCard: React.FC<UserDisplayCardProps> = props => {
         })
         return response.json();
     }
+
     useEffect(() => {
         fetchUserInfo().then((data) => {
             console.log(data)
@@ -57,7 +58,7 @@ const UserDisplayCard: React.FC<UserDisplayCardProps> = props => {
                 </Link>
             </>
         )
-    } else if (user.name.toLowerCase() == getQueryFilter.toLowerCase()) {
+    } else if (user.name.toLowerCase().includes(getQueryFilter.toLowerCase())) {
         return (
             <>
                 <Link to={`/profile/${user.id}`}>
