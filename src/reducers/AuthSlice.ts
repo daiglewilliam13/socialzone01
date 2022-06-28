@@ -23,8 +23,8 @@ let initialState = {
             id: "",
             isEmailVerified: false,
             role: "user",
-            timelineComments: [],
-            timelinePosts: [],
+            followers: [],
+            following: [],
         }
     },
     status: "idle",
