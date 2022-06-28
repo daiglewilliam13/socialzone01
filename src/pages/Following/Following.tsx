@@ -7,6 +7,9 @@ import UserDisplayCard from '../../components/UserDisplayCard/UserDisplayCard';
 
 
 const Friends = () => {
+    const followers = useSelector((state: RootState)=> {
+        state.authStatus.auth.user.followers
+    })
     const allowSideBar = useSelector((state: RootState) => state.sideNavStatus.expanded)
     let classStr = allowSideBar == 'true' ? 'allow-sidebar' : '';
     return (
