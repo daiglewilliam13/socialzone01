@@ -22,9 +22,8 @@ const SearchResults = () => {
     const [users, setUsers] = useState([initialProfileState]);
     const [posts, setPosts] = useState([]);
     const [isFetching, setIsFetching] = useState(true);
-    const [noResults, setNoResults] = useState(false)
     const [error, setError] = useState(false)
-    const {query} = useParams()
+    const { query } = useParams()
     const url: string = 'http://localhost:8080/v1/search/find?terms=' + query;
     let URL = 'http://localhost:8080/v1/search/'
     const getSearchResults = async (searchURL: string) => {
@@ -52,13 +51,10 @@ const SearchResults = () => {
     useEffect(() => {
         try {
             getSearchResults(url)
-            .then((res) => {
-                if(res.users.length==0 && res.posts.length==0){
-                    setNoResults(true)
-                }
+                .then((res) => {
                     setUsers(res.users)
                     setPosts(res.posts)
-            })
+                })
         } catch (err) {
             setError(true)
             console.log(err)
@@ -66,22 +62,22 @@ const SearchResults = () => {
             setIsFetching(false)
         }
     }, [query])
-    return (
+        return(
         <>
-            <SideNav />
-            <TopNav />
-            <div className={`content-wrapper ${classStr}`}>
-                <p>Search Results for: "{query}"</p>
-                <p>Found Users:</p>
-                <div>
-                    {userArray}
-                </div>
-                <p>Found Posts:</p>
-                <div>
-                    {postArray}
-                </div>
+        <SideNav />
+        <TopNav />
+        <div className={`content-wrapper ${classStr}`}>
+            <p>Search Results for: "{query}"</p>
+            <p>{users.length<1 ? "No Users Found" : "Found Users:"}</p>
+            <div>
+                {userArray}
             </div>
-        </>
+                    <p>{posts.length < 1 ? "No Posts Found" : "Found Posts:"}</p>
+            <div>
+                {postArray}
+            </div>
+        </div>
+    </>
     )
 }
 

@@ -14,7 +14,11 @@ const TopNav = () => {
     const id = authStatus.auth.user.id;
     const [searchTerms, setSearchTerms] = useState("")
     const toSearchPage = () => {
-        navigate('/search/'+searchTerms, {state: {terms: searchTerms}})
+        if(searchTerms.length<1){
+        alert('you must enter a search term')    
+        } else {
+            navigate('/search/'+searchTerms, {state: {terms: searchTerms}})
+        }
     }
     return (
         <div id="topnav">
