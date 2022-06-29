@@ -104,7 +104,6 @@ const Reply: FC<ReplyProps> = (props): JSX.Element => {
                 },
                 body: JSON.stringify(commentData)
             }).then((res) => {
-                
                 return res.json()
             });
             console.log(response)
