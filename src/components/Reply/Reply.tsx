@@ -5,6 +5,7 @@ import { RootState } from '../../app/store';
 import { BiDownArrow, BiUpArrow } from 'react-icons/bi';
 import PostComment from '../PostComment/PostComment';
 interface ReplyProps {
+    authorId: string,
     parentId: string
 }
 const Reply: FC<ReplyProps> = (props): JSX.Element => {
@@ -113,8 +114,13 @@ const Reply: FC<ReplyProps> = (props): JSX.Element => {
         }
     }
     const sendNotification = async (event: string, id: string) =>{
+        const eventLinkStr = 'http://localhost:8080/v1/posts/'+props.parentId;
         const notificationObj= {
-            id: id
+            eventType: event,
+            recipient: props.authorId,
+            sender: userInfo.id,
+            eventLink: eventLinkStr,
+            read: false
         }
         const response = await fetch(url+'/notifications', {
             method: 'POST',
