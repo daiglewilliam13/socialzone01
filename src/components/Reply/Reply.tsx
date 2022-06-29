@@ -113,12 +113,11 @@ const Reply: FC<ReplyProps> = (props): JSX.Element => {
         }
     }
     const sendNotification = async (event: string, id: string) =>{
-        const eventLinkStr = 'http://localhost:8080/v1/posts/'+props.parentId;
         const notificationObj= {
             eventType: event,
             recipient: props.authorId,
             sender: userInfo.id,
-            eventLink: eventLinkStr,
+            eventLink: props.parentId,
             read: false
         }
         const response = await fetch(url+'/notifications', {
