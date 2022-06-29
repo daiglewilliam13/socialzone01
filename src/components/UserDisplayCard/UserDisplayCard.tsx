@@ -3,6 +3,7 @@ import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import { RootState } from "../../app/store";
 import img from '../../images/john-doe.jpg';
+import './userdisplaycard.css';
 
 interface UserDisplayCardProps {
     id: string
@@ -48,27 +49,27 @@ const UserDisplayCard: React.FC<UserDisplayCardProps> = props => {
     if (getQueryFilter == "") {
         return (
             <>
-                <Link to={`/profile/${user.id}`}>
-                    <div>
-                        <img className="profile-header-img" src={img}></img>
-                        <p>{user.name}</p>
-                        <p>{user.followers.length} followers</p>
-                        <p>{user.following.length} following</p>
-                    </div>
+                    <div className="card-wrapper">
+                <Link to={`/profile/${user.id}`} className={"display-link"}>
+                        <img className="card-image" src={img}></img>
+                        <p className="username">{user.name}</p>
+                        <p className="card-text">{user.followers.length} followers</p>
+                        <p className="card-text">{user.following.length} following</p>
                 </Link>
+                    </div>
             </>
         )
     } else if (user.name.toLowerCase().includes(getQueryFilter.toLowerCase())) {
         return (
             <>
-                <Link to={`/profile/${user.id}`}>
-                    <div>
-                        <img className="profile-header-img" src={img}></img>
-                        <p>{user.name}</p>
-                        <p>{user.followers.length} followers</p>
-                        <p>{user.following.length} following</p>
-                    </div>
+                    <div className="card-wrapper">
+                <Link to={`/profile/${user.id}`} className={"display-link"}>
+                        <img className="card-image username" src={img}></img>
+                        <p className="username">{user.name}</p>
+                        <p className="card-text">{user.followers.length} followers</p>
+                        <p className="card-text">{user.following.length} following</p>
                 </Link>
+                    </div>
             </>
         )
     } else {

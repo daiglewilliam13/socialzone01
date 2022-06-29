@@ -79,7 +79,7 @@ const SearchResults = () => {
             <TopNav />
             <div className={`content-wrapper ${classStr}`}>
                 <p>Search Results for: "{query}"</p>
-                <p>{users.length < 1 ? "No Users Found" : `Found ${users.length} Users:`}</p>
+                <p>{users.length < 1 ? "No Users Found" : `Found Users: ${users.length}`}</p>
                 <div>
                     {userArray}
                 </div>

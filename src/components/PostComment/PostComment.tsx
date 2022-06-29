@@ -25,7 +25,6 @@ const PostComment: React.FC<CommentProps> = props => {
         setText(result.data.text)
         setName(result.data.username)
         setUserId(result.data.userId)
-        console.log(result)
     })}, [])
     return(
         <div className="comment-reply-wrapper">

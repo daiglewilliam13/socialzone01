@@ -2,12 +2,13 @@ import React, {useState} from 'react';
 import './topnav.css';
 import { FaStaylinked, FaSearch, FaBell, FaEnvelope, } from 'react-icons/fa';
 import img from '../../images/john-doe.jpg';
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 import { RootState } from '../../app/store';
-import { useNavigate, useLocation } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
+import { query } from '../../reducers/FollowingFilterSlice';
 
 const TopNav = () => {
-    const location = useLocation();
+    const dispatch = useDispatch()
     const navigate = useNavigate();
     const authStatus = useSelector((state: RootState) => state.authStatus);
     const username = authStatus.auth.user.name
@@ -17,6 +18,7 @@ const TopNav = () => {
         if(searchTerms.length<1){
         alert('you must enter a search term')    
         } else {
+            dispatch(query(""))
             navigate('/search/'+searchTerms, {state: {terms: searchTerms}})
         }
     }
