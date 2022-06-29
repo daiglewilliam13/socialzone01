@@ -21,7 +21,6 @@ const initialProfileState = {
 }
 
 const UserDisplayCard: React.FC<UserDisplayCardProps> = props => {
-    const [isFetching, setIsFetching] = useState(true)
     const [user, setUser] = useState(initialProfileState)
     const token = useSelector((state: RootState) => state.authStatus.auth.tokens.access.token)
     const getQueryFilter = useSelector((state: RootState) =>
@@ -40,11 +39,12 @@ const UserDisplayCard: React.FC<UserDisplayCardProps> = props => {
     }
 
     useEffect(() => {
-        fetchUserInfo().then((data) => {
-            console.log(data)
-            setUser(data)
-        })
-    }, [])
+        if(props.id.length>1) {
+            fetchUserInfo().then((data) => {
+                setUser(data)
+            })
+        }
+    }, [props])
     if (getQueryFilter == "") {
         return (
             <>

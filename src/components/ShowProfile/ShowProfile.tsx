@@ -98,9 +98,10 @@ const ShowProfile: FC<ProfileProps> = (props): JSX.Element => {
         })
     }
     useEffect(() => {
+        setIsLoading(true)
         retrievePosts();
         retUser();
-    }, [])
+    }, [props.id])
     return (
         <>
             <div className="profile-wrapper">

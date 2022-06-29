@@ -5,14 +5,13 @@ import { RootState } from "../../app/store";
 import SideNav from "../../components/SideNav/SideNav";
 import TopNav from "../../components/TopNav/TopNav";
 import Post from "../../components/Post/Post";
+import UserDisplayCard from "../../components/UserDisplayCard/UserDisplayCard";
 
 const initialProfileState = {
     role: "",
     isEmailVerified: false,
     email: "",
     name: "",
-    timelinePosts: [""],
-    timelineComments: [""],
     id: "",
     followers: [""],
     following: [""],
@@ -32,20 +31,32 @@ const SearchResults = () => {
             mode: 'cors',
         })
         return searchResults.json();
+
     }
-    const userArray = users.map((user) => {
-        return (
-            <>
-                <p><Link to={`/profile/${user.id}`}>{user.name}</Link></p>
-                <p>{user.email}</p>
-                <p>{user.followers.length} followers</p>
-                <p>{user.timelinePosts}</p>
-            </>
-        )
-    })
-    const postArray = posts.map((currentPost) => {
-        return <Post post={currentPost} />
-    })
+        const userArray = users.map((user) => {
+        if(isFetching){
+            return(
+                <p>Fetching Users...</p>
+            )
+        } else {
+            return (
+                <>
+                    <UserDisplayCard id={user.id} />
+                </>
+            )
+        }
+        })
+
+        const postArray = posts.map((currentPost) => {
+            if (isFetching) {
+                return (
+                    <p>Fetching Posts....</p>
+                )
+            } else {
+                return <Post post={currentPost} />
+            }
+        })
+
     const allowSideBar = useSelector((state: RootState) => state.sideNavStatus.expanded)
     let classStr = allowSideBar == 'true' ? 'allow-sidebar' : '';
     useEffect(() => {
@@ -62,22 +73,22 @@ const SearchResults = () => {
             setIsFetching(false)
         }
     }, [query])
-        return(
+    return (
         <>
-        <SideNav />
-        <TopNav />
-        <div className={`content-wrapper ${classStr}`}>
-            <p>Search Results for: "{query}"</p>
-            <p>{users.length<1 ? "No Users Found" : "Found Users:"}</p>
-            <div>
-                {userArray}
+            <SideNav />
+            <TopNav />
+            <div className={`content-wrapper ${classStr}`}>
+                <p>Search Results for: "{query}"</p>
+                <p>{users.length < 1 ? "No Users Found" : `Found ${users.length} Users:`}</p>
+                <div>
+                    {userArray}
+                </div>
+                <p>{posts.length < 1 ? "No Posts Found" : `Found Posts: ${posts.length}`}</p>
+                <div>
+                    {postArray}
+                </div>
             </div>
-                    <p>{posts.length < 1 ? "No Posts Found" : "Found Posts:"}</p>
-            <div>
-                {postArray}
-            </div>
-        </div>
-    </>
+        </>
     )
 }
 

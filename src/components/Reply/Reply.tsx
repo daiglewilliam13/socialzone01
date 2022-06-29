@@ -20,6 +20,7 @@ const Reply: FC<ReplyProps> = (props): JSX.Element => {
     }
     let commentsClassStr = expandComments ? "expanded" : "collapsed";
     const userInfo = useSelector((state: RootState) => state.authStatus.auth.user)
+    console.log(userInfo)
     const url = 'http://localhost:8080/v1';
     const addLike = async () => {
         const userId = {

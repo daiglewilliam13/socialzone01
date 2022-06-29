@@ -16,15 +16,17 @@ const PostComment: React.FC<CommentProps> = props => {
         const result = await fetch(url+props.commentId, {
             method: 'GET',
             mode: 'cors'
-        }).then((res)=>{ 
-            return res.json()
         })
+        return result.json()
+
+    }
+    useEffect(()=>{getPostText().then((result)=>{
         setDatePosted(result.data.created)
         setText(result.data.text)
         setName(result.data.username)
         setUserId(result.data.userId)
-    }
-    useEffect(()=>{getPostText()}, [])
+        console.log(result)
+    })}, [])
     return(
         <div className="comment-reply-wrapper">
             <Link to={`/profile/${userId}`}> <p>By {name} on {datePosted}</p></Link>
