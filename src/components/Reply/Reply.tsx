@@ -19,6 +19,7 @@ const Reply: FC<ReplyProps> = (props): JSX.Element => {
         setExpandComments(expandComments => !expandComments)
     }
     let commentsClassStr = expandComments ? "expanded" : "collapsed";
+    const token = useSelector((state:RootState)=> state.authStatus.auth.tokens.access)
     const userInfo = useSelector((state: RootState) => state.authStatus.auth.user)
     const url = 'http://localhost:8080/v1';
     const addLike = async () => {
@@ -102,21 +103,39 @@ const Reply: FC<ReplyProps> = (props): JSX.Element => {
                 },
                 body: JSON.stringify(commentData)
             }).then((res) => {
+                
                 return res.json()
             });
+            console.log(response)
+            sendNotification("comment", response.id);
             refreshComments();
             setReplyText('')
         }
+    }
+    const sendNotification = async (event: string, id: string) =>{
+        const notificationObj= {
+            id: id
+        }
+        const response = await fetch(url+'/notifications', {
+            method: 'POST',
+            mode: 'cors',
+            headers: {
+                'Content-Type': 'application/json',
+                'Authorization': 'Bearer ' + token
+            },
+            body: JSON.stringify(notificationObj)
+        })
+        console.log(await response.json())
     }
     const handleLike = (direction: string) => {
         setIsLoading(true)
         if (direction == 'up') {
             if (likeStatus === 'liked' || likeStatus === 'none') {
-
                 addLike()
                     .then(() => setIsLoading(false));
             } else {
-                addDislike().then((res) => {
+                addDislike()
+                .then((res) => {
                     addLike()
                         .then(() => setIsLoading(false));
                 })
