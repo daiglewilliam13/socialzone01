@@ -72,16 +72,16 @@ const Reply: FC<ReplyProps> = (props): JSX.Element => {
     }
     const refreshComments = () => {
         getComments().then((res) => {
-            if (res.data.likedBy.includes(userInfo.id)) {
+            if (res.likedBy.includes(userInfo.id)) {
                 setLikeStatus('liked')
-            } else if (res.data.dislikedBy.includes(userInfo.id)) {
+            } else if (res.dislikedBy.includes(userInfo.id)) {
                 setLikeStatus('disliked')
             } else {
                 setLikeStatus('none')
             }
-            setComments(res.data.comments);
-            setLikes(res.data.likes)
-            setDislikes(res.data.dislikes)
+            setComments(res.comments);
+            setLikes(res.likes)
+            setDislikes(res.dislikes)
             setIsLoading(false)
         })
     }
@@ -107,7 +107,7 @@ const Reply: FC<ReplyProps> = (props): JSX.Element => {
                 return res.json()
             });
             console.log(response)
-            sendNotification("comment", response.id);
+            sendNotification("Post", response.id);
             refreshComments();
             setReplyText('')
         }

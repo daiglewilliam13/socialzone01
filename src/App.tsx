@@ -10,6 +10,7 @@ import { Routes, Route, Navigate } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import { RootState } from './app/store';
 import Notifications from './pages/Notifications/Notifications';
+import PostView from './pages/PostView/PostView';
 
 function App() {
   const isLoggedIn = useSelector((state: RootState) => state.authStatus.isLoggedIn)
@@ -32,6 +33,8 @@ function App() {
           <Route path="/notifications/" element={isLoggedIn ? <Notifications /> : <Navigate to="/" />
           } />
           <Route path="/search/:query" element={isLoggedIn ? <SearchResults key={Date.now()} />  : <Navigate to="/" />
+          } />
+          <Route path="/post/:id" element={isLoggedIn ? <PostView /> : <Navigate to="/" />
           } />
         </Routes>
       </>

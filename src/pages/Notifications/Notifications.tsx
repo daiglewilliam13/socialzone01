@@ -29,7 +29,7 @@ const Notifications = () => {
     })
     useEffect(()=>{
         getNotifications()
-        .then((data)=>setNotifications(data));
+        .then((data)=>{setNotifications(data)});
     },[])
     return (
         <>
