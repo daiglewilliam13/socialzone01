@@ -53,7 +53,10 @@ const NotificationCard: FC<NoticeProps> = (props): JSX.Element => {
     }
     useEffect(() => {
         getSenderName(props.notice.sender)
-            .then((data) => { setSenderName(data.name) })
+            .then((data) => { 
+                setSenderName(data.name) 
+                setIsLoading(false);
+            })
     }, [])
     if (isLoading) {
         return (
