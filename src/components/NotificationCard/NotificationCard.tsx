@@ -3,7 +3,7 @@ import { useSelector } from 'react-redux';
 import { Link } from "react-router-dom";
 import { RootState } from '../../app/store';
 import './notificationcard.css';
-
+import { FaExclamationTriangle } from "react-icons/fa";
 interface NoticeProps {
     notice: {
         createdAt: string,
@@ -68,10 +68,10 @@ const NotificationCard: FC<NoticeProps> = (props): JSX.Element => {
         return (
             <>
                 <div className={`notice-card-wrapper ${props.notice.read}`} >
-                    <p className="notification-link" onClick={markRead}>
+                        <FaExclamationTriangle className="notice-icon"/>
                         <Link to={`/${urlSegment}/${props.notice.eventLink}`}>
                             New {eventStr}
-                        </Link></p>
+                        </Link>
                     <p className="date">on {dateStr}</p>
                 </div>
             </>

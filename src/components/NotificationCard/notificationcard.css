@@ -2,6 +2,10 @@ p.date {
     font-style: italic;
 }
 
+p {
+    margin:0;
+}
+
 .notice-card-wrapper {
     width: 80%;
     border: 2px solid grey;
@@ -9,6 +13,7 @@ p.date {
     border-radius: 3px;
     background-color: white;
     transition: 250ms;
+    display: flex;
 }
 
 div.notice-card-wrapper:hover {
@@ -20,4 +25,8 @@ div.notice-card-wrapper:hover {
 div.false {
     border-color: black;
     background-color: #ddd4ff;
+}
+
+.notice-icon{
+    font-size: 2rem;
 }
