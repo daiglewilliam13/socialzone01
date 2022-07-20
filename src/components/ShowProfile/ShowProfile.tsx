@@ -78,7 +78,9 @@ const ShowProfile: FC<ProfileProps> = (props): JSX.Element => {
             },
             body: JSON.stringify(myUserId) //logged in user Id initiating the (un)follow
         })
-        sendNotification('follow', props.id);
+        if(!followStatus){
+            sendNotification('User', props.id);
+        }
         return response.json();
     }
     const sendNotification = async (event: string, id: string) => {
@@ -86,8 +88,8 @@ const ShowProfile: FC<ProfileProps> = (props): JSX.Element => {
         const notificationObj = {
             eventType: event,
             recipient: props.id,
-            sender: myUserId,
-            eventLink: myUserId,
+            sender: myUserId.id,
+            eventLink: myUserId.id,
             read: false
         }
         const response = await fetch('http://localhost:8080/v1/notifications/', {
