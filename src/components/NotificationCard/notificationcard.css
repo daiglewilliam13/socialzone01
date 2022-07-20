@@ -14,6 +14,7 @@ p {
     background-color: white;
     transition: 250ms;
     display: flex;
+    align-items: center;
 }
 
 div.notice-card-wrapper:hover {
@@ -27,6 +28,15 @@ div.false {
     background-color: #ddd4ff;
 }
 
-.notice-icon{
+.notice-icon {
     font-size: 2rem;
+    margin: .5rem;
+}
+
+svg.true {
+    color: grey;
+}
+
+.link-text{
+    padding: 0 .5rem;
 }

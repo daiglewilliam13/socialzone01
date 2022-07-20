@@ -35,7 +35,7 @@ const NotificationCard: FC<NoticeProps> = (props): JSX.Element => {
         eventStr = "post comment by " + senderName;
         urlSegment = 'post';
     } else if (props.notice.eventType == 'User') {
-        eventStr = "follower! " + senderName;
+        eventStr = "follower: " + senderName;
         urlSegment = 'profile'
     } else {
         eventStr = "";
@@ -68,8 +68,8 @@ const NotificationCard: FC<NoticeProps> = (props): JSX.Element => {
         return (
             <>
                 <div className={`notice-card-wrapper ${props.notice.read}`} >
-                        <FaExclamationTriangle className="notice-icon"/>
-                        <Link to={`/${urlSegment}/${props.notice.eventLink}`}>
+                    <FaExclamationTriangle className={`notice-icon ${props.notice.read}`}/>
+                        <Link className={`link-text ${props.notice.read}`} to={`/${urlSegment}/${props.notice.eventLink}`}>
                             New {eventStr}
                         </Link>
                     <p className="date">on {dateStr}</p>
