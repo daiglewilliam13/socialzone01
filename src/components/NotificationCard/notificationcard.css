@@ -1,0 +1,23 @@
+p.date {
+    font-style: italic;
+}
+
+a:visited {
+    color: green;
+}
+
+div.notice-card-wrapper {
+    width: 80%;
+    border: 2px solid grey;
+    margin: 1rem auto;
+    border-radius: 3px;
+    background-color: white;
+    transition: 250ms;
+}
+
+div.notice-card-wrapper:hover {
+    box-shadow: 0px 0px 10px 5px;
+    border-radius: 3px;
+    color: #9f86ff;
+    transition: 0ms;
+}

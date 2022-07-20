@@ -2,6 +2,7 @@ import React, { FC, useState, useEffect } from "react";
 import { useSelector } from 'react-redux';
 import { Link } from "react-router-dom";
 import { RootState } from '../../app/store';
+import './notificationcard.css';
 
 interface NoticeProps {
     notice: {
@@ -51,22 +52,28 @@ const NotificationCard: FC<NoticeProps> = (props): JSX.Element => {
         })
         console.log(await response.json())
     }
+    const dateStr = new Date(props.notice.createdAt).toDateString();
     useEffect(() => {
         getSenderName(props.notice.sender)
-            .then((data) => { 
-                setSenderName(data.name) 
+            .then((data) => {
+                setSenderName(data.name)
                 setIsLoading(false);
             })
     }, [])
     if (isLoading) {
         return (
-            <p>Retrieving details...</p>
+            <p className="notice-card-wrapper">Retrieving details...</p>
         )
     } else {
         return (
             <>
-                <p onClick={markRead}><Link to={`/${urlSegment}/${props.notice.eventLink}`}>New {eventStr}</Link></p>
-                <p></p>
+                <div className="notice-card-wrapper">
+                    <p className="notification-link" onClick={markRead}>
+                        <Link to={`/${urlSegment}/${props.notice.eventLink}`}>
+                            New {eventStr}
+                        </Link></p>
+                    <p className="date">on {dateStr}</p>
+                </div>
             </>
         )
     }
