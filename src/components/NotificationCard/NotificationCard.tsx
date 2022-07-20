@@ -67,7 +67,7 @@ const NotificationCard: FC<NoticeProps> = (props): JSX.Element => {
     } else {
         return (
             <>
-                <div className="notice-card-wrapper">
+                <div className={`notice-card-wrapper ${props.notice.read}`} >
                     <p className="notification-link" onClick={markRead}>
                         <Link to={`/${urlSegment}/${props.notice.eventLink}`}>
                             New {eventStr}
