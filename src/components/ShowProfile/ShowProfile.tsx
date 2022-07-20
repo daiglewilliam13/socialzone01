@@ -78,8 +78,28 @@ const ShowProfile: FC<ProfileProps> = (props): JSX.Element => {
             },
             body: JSON.stringify(myUserId) //logged in user Id initiating the (un)follow
         })
-        
+        sendNotification('follow', props.id);
         return response.json();
+    }
+    const sendNotification = async (event: string, id: string) => {
+        console.log(props)
+        const notificationObj = {
+            eventType: event,
+            recipient: props.id,
+            sender: myUserId,
+            eventLink: myUserId,
+            read: false
+        }
+        const response = await fetch('http://localhost:8080/v1/notifications/', {
+            method: 'POST',
+            mode: 'cors',
+            headers: {
+                'Content-Type': 'application/json',
+                'Authorization': 'Bearer ' + token
+            },
+            body: JSON.stringify(notificationObj)
+        })
+        console.log(await response.json())
     }
     const retUser = () => {
         getUser(props.id, token).then((res) => {
