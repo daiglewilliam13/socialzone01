@@ -15,12 +15,26 @@ interface NoticeProps {
     }
 }
 const NotificationCard: FC<NoticeProps> = (props): JSX.Element => {
+    const [isLoading, setIsLoading] = useState(true);
+    const [senderName, setSenderName] = useState('');
+    const token = useSelector((state: RootState) => state.authStatus.auth.tokens.access.token)
+    const getSenderName = async (id: string) => {
+        const response = await fetch('http://localhost:8080/v1/users/' + id, {
+            method: 'GET',
+            mode: 'cors',
+            headers: {
+                'Content-Type': 'application/json',
+                'Authorization': 'Bearer ' + token
+            }
+        });
+        return response.json();
+    }
     let eventStr, urlSegment;
     if (props.notice.eventType == 'Post') {
-        eventStr = "post comment!";
+        eventStr = "post comment by " + senderName;
         urlSegment = 'post';
     } else if (props.notice.eventType == 'User') {
-        eventStr = "follower!";
+        eventStr = "follower! " + senderName;
         urlSegment = 'profile'
     } else {
         eventStr = "";
@@ -37,13 +51,22 @@ const NotificationCard: FC<NoticeProps> = (props): JSX.Element => {
         })
         console.log(await response.json())
     }
-    
-    return (
-        <>
-            <p onClick={markRead}><Link to={`/${urlSegment}/${props.notice.eventLink}`}>New {eventStr}</Link></p>
-            <p></p>
-        </>
-    )
+    useEffect(() => {
+        getSenderName(props.notice.sender)
+            .then((data) => { setSenderName(data.name) })
+    }, [])
+    if (isLoading) {
+        return (
+            <p>Retrieving details...</p>
+        )
+    } else {
+        return (
+            <>
+                <p onClick={markRead}><Link to={`/${urlSegment}/${props.notice.eventLink}`}>New {eventStr}</Link></p>
+                <p></p>
+            </>
+        )
+    }
 }
 
 export default NotificationCard;
