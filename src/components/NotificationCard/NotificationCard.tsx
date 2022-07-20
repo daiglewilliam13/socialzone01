@@ -15,11 +15,13 @@ interface NoticeProps {
     }
 }
 const NotificationCard: FC<NoticeProps> = (props): JSX.Element => {
-    let eventStr;
+    let eventStr, urlSegment;
     if (props.notice.eventType == 'Post') {
         eventStr = "post comment!";
+        urlSegment = 'post';
     } else if (props.notice.eventType == 'User') {
         eventStr = "follower!";
+        urlSegment = 'profile'
     } else {
         eventStr = "";
     }
@@ -35,9 +37,10 @@ const NotificationCard: FC<NoticeProps> = (props): JSX.Element => {
         })
         console.log(await response.json())
     }
+    
     return (
         <>
-            <p onClick={markRead}><Link to={`/post/${props.notice.eventLink}`}>New {eventStr}</Link></p>
+            <p onClick={markRead}><Link to={`/${urlSegment}/${props.notice.eventLink}`}>New {eventStr}</Link></p>
             <p></p>
         </>
     )
